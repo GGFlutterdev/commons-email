@@ -315,6 +315,8 @@
         <commons.release.desc>(Java 8)</commons.release.desc>
         <commons.rc.version>RC1</commons.rc.version>
         <commons.bc.version>1.5</commons.bc.version>
+        <sonar.organization>ggflutterdev</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
         <!-- override the default commons encoding property -->
         <commons.encoding>UTF-8</commons.encoding>
