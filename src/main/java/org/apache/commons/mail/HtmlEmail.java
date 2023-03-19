@@ -172,7 +172,7 @@ public class HtmlEmail extends MultiPartEmail
     @Override
     public Email setMsg(final String msg) throws EmailException
     {
-        if (EmailUtils.isEmpty(msg) || msg == null)
+        if (EmailUtils.isEmpty(msg))
         {
             throw new EmailException("Invalid message supplied");
         }
