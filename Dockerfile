@@ -15,13 +15,13 @@
 
 # syntax=docker/dockerfile:1
 
-FROM eclipse-temurin:17-jdk-jammy as base
+FROM maven:3.6.0-jdk-11-slim AS build
 WORKDIR /app
 COPY src ./src
 COPY pom.xml ./
 RUN mvn -f ./pom.xml clean package
 
 FROM openjdk:11-jre-slim
-COPY --from=base ./target/commons-email-1.6.0-SNAPSHOT.jar ./commons-email.jar
+COPY --from=build ./target/commons-email-1.6.0-SNAPSHOT.jar app/commons-email.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","app/commons-email.jar"]
