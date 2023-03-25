@@ -17,14 +17,11 @@
 
 FROM eclipse-temurin:17-jdk-jammy as base
 WORKDIR /app
-COPY mvnw pom.xml ./
 COPY src ./src
+COPY pom.xml ./
+RUN mvn -f ./pom.xml clean package
 
-FROM base as test
-RUN ["./mvnw", "test"]
-
-FROM base as development
-CMD ["./mvnw", "spring-boot:run"]
-
-FROM base as build
-RUN ./mvnw package
+FROM openjdk:11-jre-slim
+COPY --from=build ./target/commons-email-1.6.0-SNAPSHOT.jar ./commons-email.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","app/commons-email.jar"]
