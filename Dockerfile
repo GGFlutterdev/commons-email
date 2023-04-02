@@ -15,8 +15,16 @@
 
 # syntax=docker/dockerfile:1
 
-FROM maven:3.8.4-jdk-11-slim AS build
+#We specified the maven version and jdk version that we want in our image
+FROM maven:3.9.0-jdk-11-slim AS build
+
+#We created a directory
 WORKDIR /app
+
+#We copied the project in the image
 COPY src ./src
+
+#We copied the pom file in the image
 COPY pom.xml ./
+
 RUN mvn clean package
