@@ -27,4 +27,7 @@ COPY src ./src
 #We copied the pom file in the image
 COPY pom.xml ./
 
+#We copied the conf directory in the image
+COPY conf ./conf
+
 RUN mvn clean package
