@@ -300,6 +300,11 @@
             <version>${easymock.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-maven</artifactId>
+            <version>1.5.2</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -315,8 +320,6 @@
         <commons.release.desc>(Java 8)</commons.release.desc>
         <commons.rc.version>RC1</commons.rc.version>
         <commons.bc.version>1.5</commons.bc.version>
-        <sonar.organization>ggflutterdev</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
         <!-- override the default commons encoding property -->
         <commons.encoding>UTF-8</commons.encoding>
@@ -429,6 +432,14 @@
               <excludeFilterFile>${basedir}/conf/spotbugs-exclude-filter.xml</excludeFilterFile>
             </configuration>
           </plugin>
+        <plugin>
+            <groupId>org.pitest</groupId>
+            <artifactId>pitest-maven</artifactId>
+            <version>1.5.2</version>
+            <configuration>
+                <threads>8</threads>
+            </configuration>
+        </plugin>
         </plugins>
     </build>
 
