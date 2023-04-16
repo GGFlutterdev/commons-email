@@ -305,6 +305,27 @@
             <artifactId>pitest-maven</artifactId>
             <version>1.5.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-pmd-plugin</artifactId>
+            <version>3.19.0</version>
+            <type>maven-plugin</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-changes-plugin</artifactId>
+            <version>2.12.1</version>
+            <type>maven-plugin</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-checkstyle-plugin</artifactId>
+            <version>3.2.0</version>
+            <type>maven-plugin</type>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -479,7 +500,7 @@
                 <configuration>
                     <configLocation>${basedir}/conf/checkstyle.xml</configLocation>
                     <enableRulesSummary>false</enableRulesSummary>
-                    <headerFile>${basedir}/conf/HEADER.txt</headerFile>
+                    <headerLocation>${basedir}/conf/HEADER.txt</headerLocation>
                 </configuration>
             </plugin>
             <plugin>
