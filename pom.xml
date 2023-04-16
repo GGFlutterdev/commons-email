@@ -353,11 +353,6 @@
         <defaultGoal>clean verify apache-rat:check japicmp:cmp pmd:check pmd:cpd-check spotbugs:check javadoc:javadoc</defaultGoal>
         <plugins>
             <plugin>
-                <groupId>org.sonarsource.scanner.maven</groupId>
-                <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.2</version>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
