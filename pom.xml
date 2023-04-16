@@ -413,6 +413,7 @@
           <plugin>
             <groupId>org.apache.rat</groupId>
             <artifactId>apache-rat-plugin</artifactId>
+            <version>0.15</version>
             <configuration>
               <excludes>
                 <exclude>src/test/resources/eml/**</exclude>
@@ -513,6 +514,7 @@
             <plugin>
                 <groupId>org.apache.rat</groupId>
                 <artifactId>apache-rat-plugin</artifactId>
+                <version>0.15</version>
                 <configuration>
                     <excludes>
                         <exclude>src/test/resources/eml/**</exclude>
