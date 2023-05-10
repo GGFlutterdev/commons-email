@@ -89,7 +89,7 @@ public class DataSourceFileResolver extends DataSourceBaseResolver
         if (!isCid(resourceLocation))
         {
             file = new File(resourceLocation);
-
+            
             if (!file.isAbsolute())
             {
                 file = getBaseDir() != null ? new File(getBaseDir(), resourceLocation) : new File(resourceLocation);

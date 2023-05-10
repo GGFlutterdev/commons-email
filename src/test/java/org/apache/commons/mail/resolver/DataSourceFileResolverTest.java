@@ -25,6 +25,7 @@ import java.io.IOException;
 import org.apache.commons.mail.DataSourceResolver;
 import org.junit.Test;
 import javax.activation.DataSource;
+
 import org.evosuite.runtime.mock.java.io.MockFile;
 import static org.evosuite.runtime.EvoAssertions.*;
 
