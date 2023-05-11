@@ -47,7 +47,7 @@ public class MimeMessageUtilsTest {
             timeout = 4000L
     )
     public void test02() throws Throwable {
-        File var1 = MockFile.createTempFile("j+{DJU.21c2N=ZW'-", "j+{DJU.21c2N=ZW'-");
+        File var1 = MockFile.createTempFile("./j+{DJU.21c2N=ZW'-", "j+{DJU.21c2N=ZW'-");
 
         try {
             MimeMessageUtils.writeMimeMessage((MimeMessage)null, var1);
@@ -62,7 +62,7 @@ public class MimeMessageUtilsTest {
             expected = IOException.class
     )
     public void test03() throws Throwable {
-        MockFile var1 = new MockFile("E4\"PpYbVN<", "E4\"PpYbVN<");
+        MockFile var1 = new MockFile("./E4\"PpYbVN<", "E4\"PpYbVN<");
         var1.mkdirs();
 
         // L'eccezione che deve essere generata è IOException perchè non è possibile creare una cartella con "+
@@ -207,14 +207,15 @@ public class MimeMessageUtilsTest {
             timeout = 4000L
     )
     public void test12() throws Throwable {
-        MockFile var1 = new MockFile("../org.apache.commons.mail.DefaultAuthenticator", "../org.apache.commons.mail.DefaultAuthenticator");
+        MockFile var1 = new MockFile("./target/org.apache.commons.mail.DefaultAuthenticator", "org.apache.commons.mail.DefaultAuthenticator");
         Properties var2 = new Properties();
         Session var3 = Session.getInstance(var2);
-        MimeMessage var4 = MimeMessageUtils.createMimeMessage(var3, "org.apache.commons.mail.DefaultAuthenticator");
+        MimeMessage var4 = MimeMessageUtils.createMimeMessage(var3, "./target/org.apache.commons.mail.DefaultAuthenticator");
         MimeMessage var5 = new MimeMessage(var4);
         MimeMessageUtils.writeMimeMessage(var5, var1);
         long now = System.currentTimeMillis();
         Assert.assertTrue(var1.lastModified()>=now);
+        var1.delete();
         // Il valore di confronto non è corretto
         //Assert.assertEquals(1392409281320L, var1.lastModified())
     }
