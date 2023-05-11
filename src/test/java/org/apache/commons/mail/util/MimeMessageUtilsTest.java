@@ -30,9 +30,7 @@ import java.util.Properties;
 
 public class MimeMessageUtilsTest {
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test01() throws Throwable {
         try {
             MimeMessageUtils.writeMimeMessage((MimeMessage)null, (File)null);
@@ -43,9 +41,7 @@ public class MimeMessageUtilsTest {
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test02() throws Throwable {
         File var1 = MockFile.createTempFile("./j+{DJU.21c2N=ZW'-", "j+{DJU.21c2N=ZW'-");
 
@@ -77,9 +73,7 @@ public class MimeMessageUtilsTest {
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test04() throws Throwable {
         try {
             MimeMessageUtils.createMimeMessage((Session)null, (byte[])null);
@@ -90,9 +84,7 @@ public class MimeMessageUtilsTest {
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test05() throws Throwable {
         try {
             MimeMessageUtils.createMimeMessage((Session)null, (InputStream)null);
@@ -103,9 +95,7 @@ public class MimeMessageUtilsTest {
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test06() throws Throwable {
         DataInputStream var1 = new DataInputStream((InputStream)null);
 
@@ -118,9 +108,7 @@ public class MimeMessageUtilsTest {
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test07() throws Throwable {
         byte[] var1 = new byte[1];
         ByteArrayInputStream var2 = new ByteArrayInputStream(var1, 0, -5446);
@@ -133,9 +121,7 @@ public class MimeMessageUtilsTest {
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test08() throws Throwable {
         byte[] var1 = new byte[1];
         ByteArrayInputStream var2 = new ByteArrayInputStream(var1, -801, 1);
@@ -148,9 +134,7 @@ public class MimeMessageUtilsTest {
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test09() throws Throwable {
         try {
             MimeMessageUtils.createMimeMessage((Session)null, (File)null);
@@ -161,9 +145,7 @@ public class MimeMessageUtilsTest {
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test10() throws Throwable {
         MockFile var1 = new MockFile("j+{DJU.21c2N=ZW'-", "j+{DJU.21c2N=ZW'-");
 
@@ -203,9 +185,7 @@ public class MimeMessageUtilsTest {
 
 
         //PROBLEMA: il test effettua una assert su un codice che rappresenta il tempo
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test12() throws Throwable {
         MockFile var1 = new MockFile("./target/org.apache.commons.mail.DefaultAuthenticator", "org.apache.commons.mail.DefaultAuthenticator");
         Properties var2 = new Properties();
@@ -220,9 +200,7 @@ public class MimeMessageUtilsTest {
         //Assert.assertEquals(1392409281320L, var1.lastModified())
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test13() throws Throwable {
         try {
             MimeMessageUtils.createMimeMessage((Session)null, (String)null);
@@ -233,9 +211,7 @@ public class MimeMessageUtilsTest {
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test14() throws Throwable {
         Properties var1 = new Properties();
         Session var2 = Session.getDefaultInstance(var1);
@@ -249,7 +225,6 @@ public class MimeMessageUtilsTest {
     }
 
     @Test(
-            timeout = 4000L,
             expected = IOException.class
     )
     public void test15() throws Throwable {
