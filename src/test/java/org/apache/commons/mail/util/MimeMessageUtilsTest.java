@@ -192,9 +192,11 @@ public class MimeMessageUtilsTest {
         Session var3 = Session.getInstance(var2);
         MimeMessage var4 = MimeMessageUtils.createMimeMessage(var3, "./target/org.apache.commons.mail.DefaultAuthenticator");
         MimeMessage var5 = new MimeMessage(var4);
+        long before = System.currentTimeMillis();
         MimeMessageUtils.writeMimeMessage(var5, var1);
         long now = System.currentTimeMillis();
-        Assert.assertTrue(var1.lastModified()>=now);
+        Assert.assertTrue(var1.lastModified()>=before && var1.lastModified()<=now);
+        System.out.println(before+" "+now+" "+var1.lastModified());
         var1.delete();
         File directory = new File("./target/org.apache.commons.mail.DefaultAuthenticator");
         directory.delete();
@@ -226,21 +228,19 @@ public class MimeMessageUtilsTest {
         Assert.assertNotNull(var4);
     }
 
-    @Test(
-            expected = IOException.class
-    )
+    @Test
     public void test15() throws Throwable {
         byte[] var1 = new byte[4];
         MimeMessage var2 = MimeMessageUtils.createMimeMessage((Session)null, var1);
         // Il test deve verificare che viene lanciata una IOException perchè le cartelle non sono state generate
-        MockFile var3 = new MockFile("4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
+        MockFile var3 = new MockFile("./target/4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
 
-        //try {
+        try {
             MimeMessageUtils.writeMimeMessage(var2, var3);
             Assert.fail("Expecting exception: IOException");
-        /*} catch (IOException var5) {
-            EvoAssertions.verifyException("org.evosuite.runtime.mock.java.io.NativeMockedIO", var5);
-        }*/
+        } catch (IOException var5) {
+            EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
+        }
 
     }
 
