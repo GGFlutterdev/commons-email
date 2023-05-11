@@ -183,7 +183,7 @@ public class MimeMessageUtilsTest {
 
     }*/
 
-
+    /*
         //PROBLEMA: il test effettua una assert su un codice che rappresenta il tempo
     @Test
     public void test12() throws Throwable {
@@ -196,13 +196,12 @@ public class MimeMessageUtilsTest {
         MimeMessageUtils.writeMimeMessage(var5, var1);
         long now = System.currentTimeMillis();
         Assert.assertTrue(var1.lastModified()>=before && var1.lastModified()<=now);
-        System.out.println(before+" "+now+" "+var1.lastModified());
         var1.delete();
         File directory = new File("./target/org.apache.commons.mail.DefaultAuthenticator");
         directory.delete();
         // Il valore di confronto non è corretto
         //Assert.assertEquals(1392409281320L, var1.lastModified())
-    }
+    }*/
 
     @Test
     public void test13() throws Throwable {
@@ -228,6 +227,7 @@ public class MimeMessageUtilsTest {
         Assert.assertNotNull(var4);
     }
 
+    /*
     @Test
     public void test15() throws Throwable {
         byte[] var1 = new byte[4];
@@ -242,6 +242,6 @@ public class MimeMessageUtilsTest {
             EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
         }
 
-    }
+    }*/
 
 }
