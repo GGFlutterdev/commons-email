@@ -196,6 +196,8 @@ public class MimeMessageUtilsTest {
         long now = System.currentTimeMillis();
         Assert.assertTrue(var1.lastModified()>=now);
         var1.delete();
+        File directory = new File("./target/org.apache.commons.mail.DefaultAuthenticator");
+        directory.delete();
         // Il valore di confronto non è corretto
         //Assert.assertEquals(1392409281320L, var1.lastModified())
     }
