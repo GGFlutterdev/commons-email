@@ -740,9 +740,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     //Il risultato di questo test non è deterministico in quanto var3 assume un valore casuale
 /*
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test00() throws Throwable {
         FileDataSource var1 = new FileDataSource("receiver.name");
         Random.setNextRandom(-1089614106);
@@ -752,9 +750,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertEquals("cccccccccc", var3);
     }
 */
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test01() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         MockFile var2 = new MockFile("_s2 *P#", "CC }.6");
@@ -768,9 +764,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test02() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setStartTLSEnabled(true);
@@ -778,9 +772,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertFalse(var2.isSSLCheckServerIdentity());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test03() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         Email var2 = var1.setSendPartial(true);
@@ -788,9 +780,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertSame(var3, var2);
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test04() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSSLCheckServerIdentity(true);
@@ -798,9 +788,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertFalse(var2.isBoolHasAttachments());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test05() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSSLOnConnect(true);
@@ -809,7 +797,7 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test(
-            timeout = 4000L,
+            
             expected = EmailException.class
     )
     public void test06() throws Throwable {
@@ -820,9 +808,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertFalse(var3.isSSLCheckServerIdentity());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test07() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.socketTimeout = 0;
@@ -830,9 +816,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertEquals(10L, 10L);
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test08() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSocketTimeout(-1317);
@@ -840,9 +824,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertFalse(var2.isBoolHasAttachments());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test09() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSocketConnectionTimeout(0);
@@ -850,9 +832,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertNull(var2.getSubject());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test10() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSocketConnectionTimeout(-589);
@@ -860,9 +840,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertFalse(var2.isSSLCheckServerIdentity());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test11() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setStartTLSRequired(true);
@@ -870,9 +848,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertNull(var2.getSubType());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test12() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         Email var2 = var1.setStartTLSEnabled(true);
@@ -880,9 +856,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertSame(var3, var2);
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test13() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSendPartial(true);
@@ -890,9 +864,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertSame(var1, var2);
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test14() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSSLCheckServerIdentity(true);
@@ -900,9 +872,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertFalse(var2.isSSL());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test15() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         Email var2 = var1.setSSLOnConnect(true);
@@ -910,9 +880,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertSame(var3, var2);
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test16() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.socketTimeout = 0;
@@ -920,9 +888,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertEquals(10L, 10L);
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test17() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSocketTimeout(-1160);
@@ -930,9 +896,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertFalse(var2.isSSLOnConnect());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test18() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSocketConnectionTimeout(0);
@@ -940,9 +904,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertFalse(var2.isSSLOnConnect());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test19() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.socketConnectionTimeout = -2;
@@ -950,9 +912,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertFalse(var2.isSSL());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test20() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setStartTLSEnabled(true);
@@ -960,9 +920,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertNull(var2.getSubType());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test21() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSendPartial(true);
@@ -970,9 +928,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertNull(var2.getSubject());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test22() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSSLCheckServerIdentity(true);
@@ -980,9 +936,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertEquals(60000L, (long)var2.getSocketConnectionTimeout());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test23() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSSLOnConnect(true);
@@ -991,7 +945,7 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test(
-            timeout = 4000L,
+            
             expected = EmailException.class
     )
     public void test24() throws Throwable {
@@ -1002,9 +956,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertSame(var4, var3);
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test25() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.socketTimeout = 0;
@@ -1012,9 +964,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertSame(var1, var2);
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test26() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSocketTimeout(-1317);
@@ -1022,9 +972,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertFalse(var2.isSSLOnConnect());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test27() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSocketConnectionTimeout(-485);
@@ -1032,9 +980,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertNull(var2.getBounceAddress());
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test28() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         URL var2 = MockURL.getFtpExample();
@@ -1044,9 +990,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertNull(var4);
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test29() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         URL var2 = MockURL.getHttpExample();
@@ -1059,9 +1003,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertEquals("", var5);
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test30() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         File var2 = MockFile.createTempFile("org.apache.commons.mail.MultiPartEmail", "fEun");
@@ -1070,7 +1012,7 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test(
-            timeout = 4000L,
+            
             expected = IOException.class
     )
     public void test31() throws Throwable {
@@ -1083,9 +1025,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
 
     //Il risultato di questo caso di test non è deterministico in quanto è un valore casuale
-   /* @Test(
-            timeout = 4000L
-    )
+   /* @Test
     public void test32() throws Throwable {
         Random.setNextRandom(45);
         HtmlEmail var1 = new HtmlEmail();
@@ -1095,9 +1035,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertNotNull(var3);
     }*/
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test33() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.embed((DataSource)null, "text/html", "text/html");
@@ -1111,9 +1049,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test34() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.embed((DataSource)null, "\" does not exist", "US-ASCII");
@@ -1128,9 +1064,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test35() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
 
@@ -1142,9 +1076,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test36() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         FileDataSource var2 = new FileDataSource("http:/ewww.UmFakeButWellFredURLgorgtextb3pwt/html");
@@ -1160,9 +1092,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test37() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
 
@@ -1175,9 +1105,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test38() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.inlineEmbeds = null;
@@ -1191,9 +1119,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test39() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
 
@@ -1206,9 +1132,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test40() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         URL var2 = MockURL.getHttpExample();
@@ -1225,9 +1149,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test41() throws Throwable {
         Random.setNextRandom(-66);
         HtmlEmail var1 = new HtmlEmail();
@@ -1242,9 +1164,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test42() throws Throwable {
         Random.setNextRandom(-3055);
         HtmlEmail var1 = new HtmlEmail();
@@ -1258,9 +1178,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test43() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setInitialized(true);
@@ -1274,9 +1192,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test44() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         Properties var2 = new Properties();
@@ -1293,17 +1209,13 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test45() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.embed((DataSource)null, "' is already bound to file ");
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test46() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         EvoSuiteURL var2 = new EvoSuiteURL("http:/ewww.UmFakeButWellFredURLgorgtextb3pwt/html");
@@ -1313,9 +1225,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         var1.embed(var4, "embedded DataSource '");
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test47() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         URL var2 = MockURL.getHttpExample();
@@ -1329,9 +1239,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test48() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         Email var2 = var1.setMsg("T5");
@@ -1347,7 +1255,7 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test(
-            timeout = 4000L,
+            
             expected = EmailException.class
     )
     public void test49() throws Throwable {
@@ -1365,9 +1273,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test50() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setTextMsg("' is already bound to file ");
@@ -1382,7 +1288,7 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test(
-            timeout = 4000L,
+            
             expected = IOException.class
     )
     public void test51() throws Throwable {
@@ -1400,9 +1306,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test52() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         URL var2 = MockURL.getFileExample();
@@ -1417,9 +1321,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test53() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         URL var2 = MockURL.getFileExample();
@@ -1437,9 +1339,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test54() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         URL var2 = MockURL.getHttpExample();
@@ -1453,7 +1353,7 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test(
-            timeout = 4000L,
+            
             expected = IOException.class
     )
     public void test55() throws Throwable {
@@ -1471,7 +1371,7 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test(
-            timeout = 4000L,
+            
             expected = IOException.class
     )
     public void test56() throws Throwable {
@@ -1488,9 +1388,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test57() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         MockFile var2 = new MockFile("EELls3Y;\"@Or73");
@@ -1505,7 +1403,7 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test(
-            timeout = 4000L,
+            
             expected = IOException.class
     )
     public void test58() throws Throwable {
@@ -1523,9 +1421,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test59() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         MockFile var2 = new MockFile("");
@@ -1540,7 +1436,7 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test(
-            timeout = 4000L,
+            
             expected = IllegalArgumentException.class
     )
     public void test60() throws Throwable {
@@ -1551,9 +1447,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         var1.embed("http:/ewww.UmFakeButWellFredURLgorgtextb3pwt/html", "http:/ewww.UmFakeButWellFredURLgorgtextb3pwt/html");
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test61() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         URL var2 = MockURL.getFileExample();
@@ -1566,9 +1460,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertEquals(").5%3FR@kiqKs%23", var5);
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test62() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         URL var2 = MockURL.getHttpExample();
@@ -1585,9 +1477,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test63() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         URL var2 = MockURL.getFileExample();
@@ -1601,9 +1491,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test64() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
 
@@ -1616,9 +1504,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test65() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
 
@@ -1631,9 +1517,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test66() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
 
@@ -1647,7 +1531,7 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test(
-            timeout = 4000L,
+            
             expected = IOException.class
     )
     public void test67() throws Throwable {
@@ -1665,9 +1549,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+    @Test
     public void test68() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         FileDataSource var2 = new FileDataSource("Tig6*?");
@@ -1683,7 +1565,7 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test(
-            timeout = 4000L,
+            
             expected = IOException.class
     )
     public void test69() throws Throwable {
@@ -1715,7 +1597,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     //L'assert è stata aggiunta a mano perché il caso di test è stato generato senza
     @Test(
-            timeout = 4000L,
+            
             expected = NullPointerException.class
 
     )
