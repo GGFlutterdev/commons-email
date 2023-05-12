@@ -88,9 +88,11 @@ public class MimeMessageParser
      * Does the actual extraction.
      *
      * @return this instance
-     * @throws Exception parsing the mime message failed
+     * @throws IOException
+     * @throws MessagingException
+     * @throws IOException parsing the mime message failed
      */
-    public MimeMessageParser parse() throws Exception
+    public MimeMessageParser parse() throws MessagingException, IOException 
     {
         this.parse(null, mimeMessage);
         return this;
@@ -98,9 +100,9 @@ public class MimeMessageParser
 
     /**
      * @return the 'to' recipients of the message
-     * @throws Exception determining the recipients failed
+     * @throws MessagingException
      */
-    public List<javax.mail.Address> getTo() throws Exception
+    public List<javax.mail.Address> getTo() throws MessagingException 
     {
         final javax.mail.Address[] recipients = this.mimeMessage.getRecipients(Message.RecipientType.TO);
         return recipients != null ? Arrays.asList(recipients) : new ArrayList<>();
@@ -108,9 +110,9 @@ public class MimeMessageParser
 
     /**
      * @return the 'cc' recipients of the message
-     * @throws Exception determining the recipients failed
+     * @throws MessagingException
      */
-    public List<javax.mail.Address> getCc() throws Exception
+    public List<javax.mail.Address> getCc() throws MessagingException 
     {
         final javax.mail.Address[] recipients = this.mimeMessage.getRecipients(Message.RecipientType.CC);
         return recipients != null ? Arrays.asList(recipients) : new ArrayList<>();
@@ -118,9 +120,9 @@ public class MimeMessageParser
 
     /**
      * @return the 'bcc' recipients of the message
-     * @throws Exception determining the recipients failed
+     * @throws MessagingException
      */
-    public List<javax.mail.Address> getBcc() throws Exception
+    public List<javax.mail.Address> getBcc() throws MessagingException 
     {
         final javax.mail.Address[] recipients = this.mimeMessage.getRecipients(Message.RecipientType.BCC);
         return recipients != null ? Arrays.asList(recipients) : new ArrayList<>();
@@ -128,9 +130,9 @@ public class MimeMessageParser
 
     /**
      * @return the 'from' field of the message
-     * @throws Exception parsing the mime message failed
+     * @throws MessagingException
      */
-    public String getFrom() throws Exception
+    public String getFrom() throws MessagingException
     {
         final javax.mail.Address[] addresses = this.mimeMessage.getFrom();
         if (addresses == null || addresses.length == 0)
@@ -142,9 +144,9 @@ public class MimeMessageParser
 
     /**
      * @return the 'replyTo' address of the email
-     * @throws Exception parsing the mime message failed
+     * @throws MessagingException
      */
-    public String getReplyTo() throws Exception
+    public String getReplyTo() throws MessagingException
     {
         final javax.mail.Address[] addresses = this.mimeMessage.getReplyTo();
         if (addresses == null || addresses.length == 0)
@@ -156,9 +158,9 @@ public class MimeMessageParser
 
     /**
      * @return the mail subject
-     * @throws Exception parsing the mime message failed
+     * @throws MessagingException
      */
-    public String getSubject() throws Exception
+    public String getSubject() throws MessagingException
     {
         return this.mimeMessage.getSubject();
     }

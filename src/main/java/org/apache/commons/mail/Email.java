@@ -1462,14 +1462,14 @@ public abstract class Email
             Transport.send(this.message);
             return this.message.getMessageID();
         }
-        catch (final Throwable t)
+        catch (final Exception e)
         {
             final String msg = "Sending the email to the following server failed : "
                 + this.getHostName()
                 + ":"
                 + this.getSmtpPort();
 
-            throw new EmailException(msg, t);
+            throw new EmailException(msg, e);
         }
     }
 

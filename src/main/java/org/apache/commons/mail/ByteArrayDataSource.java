@@ -120,10 +120,7 @@ public class ByteArrayDataSource implements DataSource
         }
         finally
         {
-            if (baos != null)
-            {
-                baos.close();
-            }
+            baos.close();
         }
     }
 
@@ -163,10 +160,7 @@ public class ByteArrayDataSource implements DataSource
             {
                 bis.close();
             }
-            if (baos != null)
-            {
-                baos.close();
-            }
+            baos.close();
             if (osWriter != null)
             {
                 osWriter.close();
