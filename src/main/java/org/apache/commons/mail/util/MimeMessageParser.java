@@ -198,7 +198,7 @@ public class MimeMessageParser
 
                     // iterate over all MimeBodyPart
 
-                    for (int i = 0; i < count; i++)
+                    for (int i = 0; i < count; ++i)
                     {
                         parse(mp, (MimeBodyPart) mp.getBodyPart(i));
                     }

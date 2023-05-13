@@ -83,7 +83,7 @@ public class DataSourceCompositeResolver extends DataSourceBaseResolver
     @Override
     public DataSource resolve(final String resourceLocation, final boolean isLenient) throws IOException
     {
-        for (int i = 0; i < getDataSourceResolvers().length; i++)
+        for (int i = 0; i < getDataSourceResolvers().length; ++i)
         {
             final DataSourceResolver dataSourceResolver = getDataSourceResolvers()[i];
             final DataSource dataSource = dataSourceResolver.resolve(resourceLocation, isLenient);
