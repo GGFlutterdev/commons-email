@@ -378,8 +378,7 @@ public class MimeMessageParser
      */
     public DataSource findAttachmentByCid(final String cid)
     {
-        final DataSource dataSource = cidMap.get(cid);
-        return dataSource;
+        return cidMap.get(cid); //I immediately returned it in order to don't increase the use of RAM memory.
     }
 
     /**
