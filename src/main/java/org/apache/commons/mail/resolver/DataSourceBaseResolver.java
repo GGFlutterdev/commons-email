@@ -31,7 +31,7 @@ public abstract class DataSourceBaseResolver implements DataSourceResolver
     /**
      * Constructor.
      */
-    protected DataSourceBaseResolver()
+    public DataSourceBaseResolver()
     {
         this.lenient = false;
     }
@@ -41,7 +41,7 @@ public abstract class DataSourceBaseResolver implements DataSourceResolver
      *
      * @param lenient shall we ignore resources not found or throw an exception?
      */
-    protected DataSourceBaseResolver(final boolean lenient)
+    public DataSourceBaseResolver(final boolean lenient)
     {
         this.lenient = lenient;
     }
