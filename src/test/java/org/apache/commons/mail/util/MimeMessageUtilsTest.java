@@ -26,6 +26,7 @@ import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.Properties;
 
 public class MimeMessageUtilsTest {
@@ -195,8 +196,9 @@ public class MimeMessageUtilsTest {
         long before = System.currentTimeMillis();
         MimeMessageUtils.writeMimeMessage(var5, var1);
         long now = System.currentTimeMillis();
-        Assert.assertTrue(var1.lastModified()>=before && var1.lastModified()<=now);
         System.out.println(before+" "+now+" "+var1.lastModified());
+        Assert.assertTrue(var1.lastModified()>=before && var1.lastModified()<=now);
+
         var1.delete();
         File directory = new File("./target/org.apache.commons.mail.DefaultAuthenticator");
         directory.delete();
@@ -233,7 +235,9 @@ public class MimeMessageUtilsTest {
         byte[] var1 = new byte[4];
         MimeMessage var2 = MimeMessageUtils.createMimeMessage((Session)null, var1);
         // Il test deve verificare che viene lanciata una IOException perchè le cartelle non sono state generate
-        MockFile var3 = new MockFile("./target/4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
+        MockFile var3 = new MockFile("./4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
+        Files.createTempFile(null,null);
+        Files.createTempDirectory(null);
 
         try {
             MimeMessageUtils.writeMimeMessage(var2, var3);
