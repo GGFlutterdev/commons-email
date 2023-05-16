@@ -45,7 +45,7 @@ public class IDNEmailAddressConverter
         }
         else {
             final int idx = findAtSymbolIndex(email);
-            return getLocalPart(email, idx) + '@' + IDN.toASCII(getDomainPart(email, idx));
+            return idx == -1 ? email : getLocalPart(email, idx) + '@' + IDN.toASCII(getDomainPart(email, idx));
         }
     }
 
@@ -72,7 +72,7 @@ public class IDNEmailAddressConverter
             return email;
         } else {
             final int idx = findAtSymbolIndex(email);
-            return getLocalPart(email, idx) + '@' + IDN.toUnicode(getDomainPart(email, idx));
+            return idx == -1 ? email : getLocalPart(email, idx) + '@' + IDN.toUnicode(getDomainPart(email, idx));
         }
     }
 

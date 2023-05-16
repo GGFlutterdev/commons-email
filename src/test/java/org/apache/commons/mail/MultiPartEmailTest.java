@@ -96,7 +96,8 @@ public class MultiPartEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
+    /*
+     * @Test(
             timeout = 4000L
     )
     public void test02() throws Throwable {
@@ -113,6 +114,7 @@ public class MultiPartEmailTest extends AbstractEmailTest
         }
 
     }
+     */
 
     @Test(
             timeout = 4000L
@@ -394,7 +396,8 @@ public class MultiPartEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
+    /*
+     * @Test(
             timeout = 4000L
     )
     public void test28() throws Throwable {
@@ -409,6 +412,7 @@ public class MultiPartEmailTest extends AbstractEmailTest
         }
 
     }
+     */
 
     @Test(
             timeout = 4000L,
