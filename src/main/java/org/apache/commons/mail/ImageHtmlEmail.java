@@ -125,7 +125,7 @@ public class ImageHtmlEmail extends HtmlEmail
             throws EmailException, IOException
     {
         DataSource dataSource;
-        final StringBuffer stringBuffer = new StringBuffer();
+        final StringBuffer stringBuffer = new StringBuffer("");
 
         // maps "cid" --> name
         final Map<String, String> cidCache = new HashMap<>();

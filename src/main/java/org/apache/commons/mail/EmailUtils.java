@@ -20,12 +20,15 @@ package org.apache.commons.mail;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 import java.util.BitSet;
+import java.util.List;
 import java.util.Random;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.mail.util.MimeMessageUtils;
 
 /**
@@ -235,7 +238,7 @@ final class EmailUtils
             }
         }
 
-        final StringBuilder buffer = new StringBuilder();
+        final StringBuilder buffer = new StringBuilder("");
         final int gap = end - start;
 
         while (count-- != 0)
@@ -291,10 +294,16 @@ final class EmailUtils
             return null;
         }
 
-        final StringBuilder builder = new StringBuilder();
-        for (final byte c : input.getBytes(US_ASCII))
+        final StringBuilder builder = new StringBuilder("");
+
+        //Using List instead of Arrays with Foreach save CPU cycles calculations and RAM consumption.
+        byte[] arrayBytes = input.getBytes(US_ASCII);
+        Byte[] arrayWrapper = ArrayUtils.toObject(arrayBytes);
+        List<Byte> listByte = Arrays.asList(arrayWrapper);
+
+        for (Byte c : listByte)
         {
-            int b = c;
+            int b = c.intValue();
             if (b < 0)
             {
                 b = 256 + b;
