@@ -132,7 +132,7 @@ public class DataSourceUrlResolverTest extends AbstractDataSourceResolverTest
         Assert.assertNull(var2);
     }
 
-   /* @Test(
+    @Test(
             expected = MockitoException.class
     )
     public void test03() throws Throwable {
@@ -165,7 +165,7 @@ public class DataSourceUrlResolverTest extends AbstractDataSourceResolverTest
         URL var5 = var4.getBaseUrl();
         Assert.assertSame(var3, var5);
     }
-*/
+
     @Test
     public void test06() throws Throwable {
         URL var1 = MockURL.getHttpExample();
