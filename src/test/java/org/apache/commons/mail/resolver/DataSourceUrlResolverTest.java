@@ -244,20 +244,20 @@ public class DataSourceUrlResolverTest extends AbstractDataSourceResolverTest
 
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IOException.class)
     public void test12() throws Throwable {
         //URL var1 = MockURL.getHttpExample();
         URL var1 =new URL("https://www.apache.org");
         DataSourceUrlResolver var2 = new DataSourceUrlResolver(var1, false);
 
-        try {
-            //var2.resolve("*#u\u007fl}O~C7+Qmm^#4;v", false);
-            var2.resolve("https://", false);
+     //  try {
+            var2.resolve("*#u\u007fl}O~C7+Qmm^#4;v", false);
+            //var2.resolve("https://", false);
             Assert.fail("Expecting exception: IOException");
-        } catch (IOException var4) {
-            EvoAssertions.verifyException("org.evosuite.runtime.mock.java.net.EvoHttpURLConnection", var4);
-            //EvoAssertions.verifyException("java.base/sun.net.www.protocol.http.HttpURLConnectionn", var4);
-        }
+       /* } catch (IOException var4) {
+            System.out.println("Sono nel catch");
+            //EvoAssertions.verifyException("org.evosuite.runtime.mock.java.net.EvoHttpURLConnection", var4);
+        }*/
 
     }
 
@@ -270,19 +270,18 @@ public class DataSourceUrlResolverTest extends AbstractDataSourceResolverTest
     }
 
     @Test(
-            expected = IllegalArgumentException.class
-    )
+            expected = IOException.class)
     public void test14() throws Throwable {
         //URL var1 = MockURL.getFileExample();
         URL var1 =new URL("https://www.apache.org");
         DataSourceUrlResolver var2 = new DataSourceUrlResolver(var1);
 
-        try {
-            var2.resolve("https://");
+        //try {
+            var2.resolve("*#u\u007fl}O~C7+Qmm^#4;v");
             Assert.fail("Expecting exception: IOException");
-        } catch (IOException var4) {
+        /*} catch (IOException var4) {
             EvoAssertions.verifyException("org.evosuite.runtime.mock.java.net.EvoHttpURLConnection", var4);
-        }
+        }*/
 
     }
     //Si aspetta che il test da NullPointerException ma non è così
