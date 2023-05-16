@@ -27,6 +27,8 @@ import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class MimeMessageUtilsTest {
@@ -188,19 +190,18 @@ public class MimeMessageUtilsTest {
         //PROBLEMA: il test effettua una assert su un codice che rappresenta il tempo
     @Test
     public void test12() throws Throwable {
-        MockFile var1 = new MockFile("./target/org.apache.commons.mail.DefaultAuthenticator", "org.apache.commons.mail.DefaultAuthenticator");
+        MockFile var1 = new MockFile("./src/test/java/org.apache.commons.mail.DefaultAuthenticator", "org.apache.commons.mail.DefaultAuthenticator");
         Properties var2 = new Properties();
         Session var3 = Session.getInstance(var2);
-        MimeMessage var4 = MimeMessageUtils.createMimeMessage(var3, "./target/org.apache.commons.mail.DefaultAuthenticator");
+        MimeMessage var4 = MimeMessageUtils.createMimeMessage(var3, "./src/test/java/org.apache.commons.mail.DefaultAuthenticator");
         MimeMessage var5 = new MimeMessage(var4);
         long before = System.currentTimeMillis();
         MimeMessageUtils.writeMimeMessage(var5, var1);
         long now = System.currentTimeMillis();
-        System.out.println(before+" "+now+" "+var1.lastModified());
         Assert.assertTrue(var1.lastModified()>=before && var1.lastModified()<=now);
 
         var1.delete();
-        File directory = new File("./target/org.apache.commons.mail.DefaultAuthenticator");
+        File directory = new File("./src/test/java/org.apache.commons.mail.DefaultAuthenticator");
         directory.delete();
         // Il valore di confronto non è corretto
         //Assert.assertEquals(1392409281320L, var1.lastModified())
@@ -235,9 +236,16 @@ public class MimeMessageUtilsTest {
         byte[] var1 = new byte[4];
         MimeMessage var2 = MimeMessageUtils.createMimeMessage((Session)null, var1);
         // Il test deve verificare che viene lanciata una IOException perchè le cartelle non sono state generate
-        MockFile var3 = new MockFile("./4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
-        Files.createTempFile(null,null);
-        Files.createTempDirectory(null);
+        String os = System.getProperty("os.name").toLowerCase();
+        MockFile var3 = null;
+        if (os.contains("win")) {
+            //Path for windows
+            var3 = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
+        }
+        else {
+            //Path for Mac and Ubuntu
+            var3 = new MockFile("/Urs/luigialons-email/src/q:W~Zb4&7s#.Z(VKP^");
+        }
 
         try {
             MimeMessageUtils.writeMimeMessage(var2, var3);
@@ -245,7 +253,7 @@ public class MimeMessageUtilsTest {
         } catch (IOException var5) {
             EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
         }
-
     }
+
 
 }
