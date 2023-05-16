@@ -393,23 +393,20 @@ public class MultiPartEmailTest extends AbstractEmailTest
 
     }
 
-    /*
-     * @Test(
-            timeout = 4000L
-    )
+
+    @Test
     public void test28() throws Throwable {
         MultiPartEmail var1 = new MultiPartEmail();
-        URL var2 = MockURL.getHttpExample();
+        //URL var2 = MockURL.getHttpExample();
 
         try {
-            var1.attach(var2, "", "", "");
+            var1.attach(new URL(this.strTestURL), "", "", "");
             Assert.fail("Expecting exception: Exception");
         } catch (Exception var4) {
             EvoAssertions.verifyException("org.apache.commons.mail.MultiPartEmail", var4);
         }
 
     }
-     */
 
     @Test(
             timeout = 4000L,
