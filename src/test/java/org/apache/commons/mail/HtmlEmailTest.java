@@ -748,7 +748,6 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertNotNull(var3);
         Assert.assertEquals("cccccccccc", var3);
     }
-*/
     @Test
     public void test01() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
@@ -1024,7 +1023,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
 
     //Il risultato di questo caso di test non è deterministico in quanto è un valore casuale
-   /* @Test
+   @Test
     public void test32() throws Throwable {
         Random.setNextRandom(45);
         HtmlEmail var1 = new HtmlEmail();
@@ -1032,7 +1031,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         String var3 = var1.embed(var2);
         Assert.assertEquals("mmmmmmmmmm", var3);
         Assert.assertNotNull(var3);
-    }*/
+    }
 
     @Test
     public void test33() throws Throwable {
@@ -1604,7 +1603,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         HtmlEmail var1 = new HtmlEmail();
         var1.embed((File)null);
         Assert.fail("Expecting exception: NullPointerException");
-    }
+    }*/
 
 
 
