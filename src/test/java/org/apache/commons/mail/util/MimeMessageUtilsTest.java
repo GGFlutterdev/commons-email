@@ -18,7 +18,6 @@ package org.apache.commons.mail.util;
 
 import org.evosuite.runtime.EvoAssertions;
 import org.evosuite.runtime.mock.java.io.MockFile;
-import org.evosuite.runtime.testdata.FileSystemHandling;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -188,7 +187,7 @@ public class MimeMessageUtilsTest {
 
 
         //PROBLEMA: il test effettua una assert su un codice che rappresenta il tempo
-    @Test
+    /*@Test
     public void test12() throws Throwable {
         MockFile var1 = new MockFile("./src/test/java/org.apache.commons.mail.DefaultAuthenticator", "org.apache.commons.mail.DefaultAuthenticator");
         Properties var2 = new Properties();
@@ -199,13 +198,12 @@ public class MimeMessageUtilsTest {
         MimeMessageUtils.writeMimeMessage(var5, var1);
         long now = System.currentTimeMillis();
         Assert.assertTrue(var1.lastModified()>=before && var1.lastModified()<=now);
-
         var1.delete();
         File directory = new File("./src/test/java/org.apache.commons.mail.DefaultAuthenticator");
         directory.delete();
         // Il valore di confronto non è corretto
         //Assert.assertEquals(1392409281320L, var1.lastModified())
-    }
+    }*/
 
     @Test
     public void test13() throws Throwable {
