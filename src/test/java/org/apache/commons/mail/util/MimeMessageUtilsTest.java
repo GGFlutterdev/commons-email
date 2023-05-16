@@ -60,18 +60,23 @@ public class MimeMessageUtilsTest {
             expected = IOException.class
     )
     public void test03() throws Throwable {
-        MockFile var1 = new MockFile("./E4\"PpYbVN<", "E4\"PpYbVN<");
-        var1.mkdirs();
+        String os = System.getProperty("os.name").toLowerCase();
+        MockFile var1 = null;
+        if (os.contains("win")) {
+            //Path for windows
+            var1 = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
+        }
+        else {
+            //Path for Mac and Ubuntu
+            var1 = new MockFile("/Urs/luigialons-email/src/q:W~Zb4&7s#.Z(VKP^");
+        }
 
-        // L'eccezione che deve essere generata è IOException perchè non è possibile creare una cartella con "+
-        // Quindi ho modificato l'oracolo (cioè l'eccezione aspettata)
-
-        //try {
+        try {
             MimeMessageUtils.writeMimeMessage((MimeMessage)null, var1);
             Assert.fail("Expecting exception: FileNotFoundException");
-        /*} catch (FileNotFoundException var3) {
+        } catch (FileNotFoundException var3) {
             EvoAssertions.verifyException("org.evosuite.runtime.mock.java.io.MockFileOutputStream", var3);
-        }*/
+        }
 
     }
 
