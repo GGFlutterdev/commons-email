@@ -1562,14 +1562,12 @@ public class HtmlEmailTest extends AbstractEmailTest
         }
 
     }
-/*
-    @Test(
 
-            expected = IOException.class
-    )
+    @Test
     public void test69() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
-        File var2 = MockFile.createTempFile("\" does not exist", "\" does not exist");
+        //File var2 = MockFile.createTempFile("\" does not exist", "\" does not exist");
+        File var2 = File.createTempFile(" does not exist", " does not exist");
         String var3 = var1.embed(var2, "\" does not exist");
         Assert.assertNotNull(var3);
         Assert.assertEquals("%22%20does%20not%20exist", var3);
@@ -1577,7 +1575,6 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertEquals("%22%20does%20not%20exist", var4);
         Assert.assertNotNull(var4);
     }
-*/
     @Test(
             expected = EmailException.class
     )
