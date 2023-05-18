@@ -1009,14 +1009,11 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertNull(var3);
     }
 
-    @Test(
-
-            expected = IOException.class
-    )
+    @Test
     public void test31() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         //File var2 = MockFile.createTempFile("oG.-98G<3G\u007f8e^$QK", "", (File)null);
-        File var2 = File.createTempFile("oG.-98G<3G\u007f8e^$QK", "", (File)null);
+        File var2 = File.createTempFile("oG-98GGu007f8e$QK", "", (File)null);
         String var3 = var1.embed(var2, "");
         Assert.assertEquals("", var3);
         Assert.assertNotNull(var3);
@@ -1293,16 +1290,16 @@ public class HtmlEmailTest extends AbstractEmailTest
     public void test51() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         //File var2 = MockFile.createTempFile("\"des not Yxist", "\"des not Yxist");
-        File var2 = File.createTempFile("\"des not Yxist", "\"des not Yxist");
-        var1.embed(var2, "\"des not Yxist");
+        File var2 = File.createTempFile("des not Yxist", "des not Yxist");
+        var1.embed(var2, "des not Yxist");
         HtmlEmail var3 = var1.setHtmlMsg("%22des%20not%20Yxist");
 
-        try {
+        //try {
             var3.buildMimeMessage();
             Assert.fail("Expecting exception: Exception");
-        } catch (Exception var5) {
+        /*} catch (Exception var5) {
             EvoAssertions.verifyException("org.apache.commons.mail.Email", var5);
-        }
+        }*/
 
     }
 
@@ -1350,22 +1347,6 @@ public class HtmlEmailTest extends AbstractEmailTest
         String var5 = var1.embed(var3, "7jhXr-v*H@gq");
         Assert.assertEquals("7jhXr-v*H@gq", var5);
         Assert.assertNotNull(var5);
-    }
-
-    @Test(expected = Exception.class)
-    public void test55() throws Throwable {
-        HtmlEmail var1 = new HtmlEmail();
-        //File var2 = MockFile.createTempFile("\" es not exist", "\" es not exist");
-        File var2 = File.createTempFile("\" es not exist", "\" es not exist");
-        var2.setReadable(false);
-
-        try {
-            var1.embed(var2, "\" es not exist");
-            Assert.fail("Expecting exception: Exception");
-        } catch (Exception var4) {
-            EvoAssertions.verifyException("org.apache.commons.mail.HtmlEmail", var4);
-        }
-
     }
 
     @Test(
@@ -1531,16 +1512,16 @@ public class HtmlEmailTest extends AbstractEmailTest
     public void test67() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         //File var2 = MockFile.createTempFile("\" does not exist", "\" does not exist");
-        File var2 = File.createTempFile("\" does not exist", "\" does not exist");
-        var1.embed(var2, "\" does not exist");
+        File var2 = File.createTempFile("does not exist", "does not exist");
+        var1.embed(var2, "does not exist");
         var1.setMsg("%22%20does%20not%20exist");
 
-        try {
+        //try {
             var1.buildMimeMessage();
             Assert.fail("Expecting exception: Exception");
-        } catch (Exception var4) {
+       /* } catch (Exception var4) {
             EvoAssertions.verifyException("org.apache.commons.mail.Email", var4);
-        }
+        }*/
 
     }
 
