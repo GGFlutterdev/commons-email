@@ -21,6 +21,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.io.File;
 import java.io.IOException;
@@ -184,7 +185,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         // unique?
         final String newCid =
             this.email.embed(new URL(this.strTestURL), "Test name 2");
-        assertFalse(strEmbed.equals(newCid));
+        assertNotEquals(strEmbed, newCid);
 
         // ====================================================================
         // Test Exceptions
@@ -239,8 +240,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         final File otherFile = File.createTempFile("testEmbedFile2", "txt");
         otherFile.deleteOnExit();
         final String newCid = this.email.embed(otherFile);
-        assertFalse("didn't get unique CID from embedding new file",
-                strEmbed.equals(newCid));
+        assertNotEquals(strEmbed, newCid, "didn't get unique CID from embedding new file");
     }
 
     @Test
@@ -253,8 +253,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         final URL fileUrl = tmpFile.toURI().toURL();
         final String urlCid = this.email.embed(fileUrl, "urlName");
 
-        assertFalse("file and URL cids should be different even for same resource",
-                fileCid.equals(urlCid));
+        assertNotEquals(fileCid, urlCid, "file and URL cids should be different even for same resource");
     }
 
     @Test

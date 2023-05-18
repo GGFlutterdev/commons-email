@@ -155,9 +155,9 @@ public class DataSourceFileResolverTest extends AbstractDataSourceResolverTest
     public void testResolvingFileLenient() throws Exception
     {
         final DataSourceResolver dataSourceResolver = new DataSourceFileResolver(new File("./src/test/resources"), true);
-        assertTrue(toByteArray(dataSourceResolver.resolve("images/asf_logo_wide.gif")).length == IMG_SIZE);
-        assertTrue(toByteArray(dataSourceResolver.resolve("./images/asf_logo_wide.gif")).length == IMG_SIZE);
-        assertTrue(toByteArray(dataSourceResolver.resolve("../resources/images/asf_logo_wide.gif")).length == IMG_SIZE);
+        assertEquals(IMG_SIZE, toByteArray(dataSourceResolver.resolve("images/asf_logo_wide.gif")).length);
+        assertEquals(IMG_SIZE, toByteArray(dataSourceResolver.resolve("./images/asf_logo_wide.gif")).length);
+        assertEquals(IMG_SIZE, toByteArray(dataSourceResolver.resolve("../resources/images/asf_logo_wide.gif")).length);
         assertNull(toByteArray(dataSourceResolver.resolve("/images/does-not-exist.gif")));
         assertNull(dataSourceResolver.resolve("./images/does-not-exist.gif"));
     }
