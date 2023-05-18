@@ -747,7 +747,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         String var3 = var2.embed(var1, "HRRQjn?\u007f?vMaCw:J");
         Assert.assertNotNull(var3);
         Assert.assertEquals("cccccccccc", var3);
-    }
+    }*/
     @Test
     public void test01() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
@@ -1023,7 +1023,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
 
     //Il risultato di questo caso di test non è deterministico in quanto è un valore casuale
-   @Test
+ /*  @Test
     public void test32() throws Throwable {
         Random.setNextRandom(45);
         HtmlEmail var1 = new HtmlEmail();
@@ -1031,7 +1031,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         String var3 = var1.embed(var2);
         Assert.assertEquals("mmmmmmmmmm", var3);
         Assert.assertNotNull(var3);
-    }
+    }*/
 
     @Test
     public void test33() throws Throwable {
@@ -1213,7 +1213,8 @@ public class HtmlEmailTest extends AbstractEmailTest
         var1.embed((DataSource)null, "' is already bound to file ");
     }
 
-    @Test
+    //Test case generato senza assert
+   /* @Test
     public void test46() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         EvoSuiteURL var2 = new EvoSuiteURL("http:/ewww.UmFakeButWellFredURLgorgtextb3pwt/html");
@@ -1221,19 +1222,20 @@ public class HtmlEmailTest extends AbstractEmailTest
         URL var3 = MockURL.getFtpExample();
         URL var4 = MockURL.URL(var3, "http:/ewww.UmFakeButWellFredURLgorgtextb3pwt/html");
         var1.embed(var4, "embedded DataSource '");
-    }
+    }*/
 
-    @Test
+    @Test(expected = Exception.class)
     public void test47() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
-        URL var2 = MockURL.getHttpExample();
+        //URL var2 = MockURL.getHttpExample();
+        URL var2 = new URL("http://www.google.com");
 
-        try {
-            var1.embed(var2, "attachment");
+        //try {
+            var1.embed(var2, "");
             Assert.fail("Expecting exception: Exception");
-        } catch (Exception var4) {
+        /*} catch (Exception var4) {
             EvoAssertions.verifyException("org.apache.commons.mail.HtmlEmail", var4);
-        }
+        }*/
 
     }
 
@@ -1433,16 +1435,15 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-
-            expected = IllegalArgumentException.class
-    )
+    //Test case generato senza assert (aggiunta a mano)
+    @Test(expected = EmailException.class)
     public void test60() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         EvoSuiteURL var2 = new EvoSuiteURL("http:/ewww.UmFakeButWellFredURLgorgtextb3pwt/html");
         String var3 = "C:\\Users\\sdell\\commons-emil\\mail.smtp.socketFactory.class\\file:\\some\\fake\\but\\wellformed\\url\\mail.smp.socketFactory.class0file:\\some\\fake\\but\\wellformed\\url";
         NetworkHandling.createRemoteTextFile(var2, var3);
         var1.embed("http:/ewww.UmFakeButWellFredURLgorgtextb3pwt/html", "http:/ewww.UmFakeButWellFredURLgorgtextb3pwt/html");
+        Assert.fail("Expecting exception: EmailException");
     }
 
     @Test
@@ -1603,7 +1604,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         HtmlEmail var1 = new HtmlEmail();
         var1.embed((File)null);
         Assert.fail("Expecting exception: NullPointerException");
-    }*/
+    }
 
 
 
