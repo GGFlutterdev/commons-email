@@ -1062,7 +1062,7 @@ public class EmailTest extends AbstractEmailTest
          email.addTo("me@home.com");
          email.getSession().getProperties().setProperty(EmailConstants.MAIL_FROM, "me@home.com");
 
-         email.send();
+         assertEquals(email.send().getClass(), String.class);
     }
 
     @Test

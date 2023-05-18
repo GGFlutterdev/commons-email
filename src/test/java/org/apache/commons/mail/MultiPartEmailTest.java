@@ -17,6 +17,7 @@
 package org.apache.commons.mail;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,15 +39,12 @@ import org.apache.commons.mail.mocks.MockMultiPartEmailConcrete;
 import org.evosuite.runtime.EvoAssertions;
 import org.evosuite.runtime.mock.java.io.MockFile;
 import org.evosuite.runtime.mock.java.net.MockURL;
-import org.evosuite.runtime.testdata.EvoSuiteURL;
-import org.evosuite.runtime.testdata.NetworkHandling;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-import static org.evosuite.runtime.EvoAssertions.*;
 
 /**
  * JUnit test case for MultiPartEmail Class.
@@ -1026,16 +1024,20 @@ public class MultiPartEmailTest extends AbstractEmailTest
         // ====================================================================
         // Test Success - URL
         // ====================================================================
-        this.email.attach(
-            new URL(this.strTestURL),
-            "Test Attachment",
-            "Test Attachment Desc");
+        assertDoesNotThrow(
+            () -> this.email.attach(
+                new URL(this.strTestURL),
+                "Test Attachment",
+                "Test Attachment Desc")
+        );
 
         // bad name
-        this.email.attach(
-            new URL(this.strTestURL),
-            null,
-            "Test Attachment Desc");
+        assertDoesNotThrow(
+            () -> this.email.attach(
+                new URL(this.strTestURL),
+                null,
+                "Test Attachment Desc")
+        );
     }
 
     @Test

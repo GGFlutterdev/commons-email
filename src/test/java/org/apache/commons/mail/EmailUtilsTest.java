@@ -23,6 +23,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -177,9 +178,9 @@ public class EmailUtilsTest {
   }
 
   @Test(timeout = 4000)
-  public void test13()  throws Throwable  {
+  public void testNotNullOnNonNullParameter()  throws Throwable  {
       Object object0 = new Object();
-      EmailUtils.notNull(object0, "x)GO]}5ME yrVrQ5S");
+      assertDoesNotThrow(() -> EmailUtils.notNull(object0, "x)GO]}5ME yrVrQ5S"));
   }
 
   @Test(timeout = 4000)
@@ -219,9 +220,10 @@ public class EmailUtilsTest {
   }
 
   @Test(timeout = 4000)
-  public void test20()  throws Throwable  {
+  public void testRandomAlphabeticGeneration()  throws Throwable  {
       // Undeclared exception!
-      EmailUtils.randomAlphabetic(1800);
+      final String randomAlphabetic = EmailUtils.randomAlphabetic(1800);
+      assertTrue("Error in generating random alphabetic", randomAlphabetic.getClass().equals(String.class) && randomAlphabetic.length() == 1800);
   }
 
   @Test(timeout = 4000)
