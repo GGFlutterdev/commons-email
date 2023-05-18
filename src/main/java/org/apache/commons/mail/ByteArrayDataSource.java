@@ -133,17 +133,14 @@ public class ByteArrayDataSource implements DataSource
     private void byteArrayDataSource(final InputStream aIs)
         throws IOException
     {
-        BufferedInputStream bis = null;
-        BufferedOutputStream osWriter = null;
-
-        try
+        //BufferedInputStream bis = null;
+        //BufferedOutputStream osWriter = null;
+        baos = new ByteArrayOutputStream();
+        try(BufferedInputStream bis = new BufferedInputStream(aIs);
+        BufferedOutputStream osWriter = new BufferedOutputStream(baos))
         {
             int length = 0;
             final byte[] buffer = new byte[ByteArrayDataSource.BUFFER_SIZE];
-
-            bis = new BufferedInputStream(aIs);
-            baos = new ByteArrayOutputStream();
-            osWriter = new BufferedOutputStream(baos);
 
             // Write the InputData to OutputStream
             while ((length = bis.read(buffer)) != -1)
@@ -151,20 +148,20 @@ public class ByteArrayDataSource implements DataSource
                 osWriter.write(buffer, 0, length);
             }
             osWriter.flush();
-            osWriter.close();
+            //osWriter.close();
 
         }
         finally
         {
-            if (bis != null)
-            {
-                bis.close();
-            }
+            //if (bis != null)
+            //{
+            //    bis.close();
+            //}
             baos.close();
-            if (osWriter != null)
-            {
-                osWriter.close();
-            }
+            //if (osWriter != null)
+            //{
+            //    osWriter.close();
+            //}
         }
     }
 

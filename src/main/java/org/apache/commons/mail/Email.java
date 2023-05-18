@@ -1359,20 +1359,23 @@ public abstract class Email
                     this.message.setContent(this.content, this.contentType);
                 }
             }
-            else if (this.emailBody != null)
-            {
-                if (this.contentType == null)
+            else{
+                if (this.emailBody != null)
                 {
-                    this.message.setContent(this.emailBody);
+                    if (this.contentType == null)
+                    {
+                        this.message.setContent(this.emailBody);
+                    }
+                    else
+                    {
+                        this.message.setContent(this.emailBody, this.contentType);
+                    }
                 }
                 else
                 {
-                    this.message.setContent(this.emailBody, this.contentType);
+                    // it will execute if content==null && emailBody==null
+                    this.message.setText("");
                 }
-            }
-            else
-            {
-                this.message.setText("");
             }
 
             if (this.fromAddress != null)

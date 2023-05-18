@@ -221,51 +221,45 @@ final class EmailUtils
         {
             return "";
         }
-        if (count < 0)
+        else if (count < 0)
         {
             throw new IllegalArgumentException("Requested random string length " + count + " is less than 0.");
         }
+        else {
 
-        if (start == 0 && end == 0)
-        {
-            end = 'z' + 1;
-            start = ' ';
+            if (start == 0 && end == 0) {
+                end = 'z' + 1;
+                start = ' ';
 
-            if (!letters && !numbers)
-            {
-                start = 0;
-                end = Integer.MAX_VALUE;
+                if (!letters && !numbers) {
+                    start = 0;
+                    end = Integer.MAX_VALUE;
+                }
             }
+
+            final StringBuilder buffer = new StringBuilder("");
+            final int gap = end - start;
+
+            while (count != 0) {
+                --count;
+                char ch;
+
+                if (chars == null) {
+                    ch = (char) (random.nextInt(gap) + start);
+                } else {
+                    ch = chars[random.nextInt(gap) + start];
+                }
+
+                if (letters && numbers && Character.isLetterOrDigit(ch) || letters && Character.isLetter(ch)
+                        || numbers && Character.isDigit(ch) || !letters && !numbers) {
+                    buffer.append(ch);
+                } else {
+                    ++count;
+                }
+            }
+
+            return buffer.toString();
         }
-
-        final StringBuilder buffer = new StringBuilder("");
-        final int gap = end - start;
-
-        while (count-- != 0)
-        {
-            char ch;
-
-            if (chars == null)
-            {
-                ch = (char) (random.nextInt(gap) + start);
-            }
-            else
-            {
-                ch = chars[random.nextInt(gap) + start];
-            }
-
-            if (letters && numbers && Character.isLetterOrDigit(ch) || letters && Character.isLetter(ch)
-                            || numbers && Character.isDigit(ch) || !letters && !numbers)
-            {
-                buffer.append(ch);
-            }
-            else
-            {
-                ++count;
-            }
-        }
-
-        return buffer.toString();
     }
 
     /**
