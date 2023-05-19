@@ -20,6 +20,7 @@ package org.apache.commons.mail;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.BitSet;
 import java.util.List;
@@ -51,7 +52,7 @@ final class EmailUtils
      * Random object used by random method. This has to be not local to the random method
      * so as to not return the same value in the same millisecond.
      */
-    private static final Random RANDOM = new Random();
+    private static final SecureRandom RANDOM = new SecureRandom();
 
     /**
      * The default charset used for URL encoding.
@@ -215,7 +216,7 @@ final class EmailUtils
         final boolean letters,
         final boolean numbers,
         final char [] chars,
-        final Random random)
+        final SecureRandom random)
     {
         if (count == 0)
         {
