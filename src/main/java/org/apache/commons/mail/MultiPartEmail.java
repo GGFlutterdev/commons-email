@@ -232,17 +232,7 @@ public class MultiPartEmail extends Email
                 // an IOException will be thrown during super.send().
 
                 final BodyPart body = this.getPrimaryBodyPart();
-                try
-                {
-                    body.getContent();
-                }
-                catch (final IOException e) // NOPMD
-                {
-                    // do nothing here.
-                    // content will be set to an empty string as a result.
-                    // (Should this really be rethrown as an email exception?)
-                    // throw new EmailException(e);
-                }
+                getBodyContent(body);
             }
 
             if (subType != null)
@@ -255,6 +245,20 @@ public class MultiPartEmail extends Email
         catch (final MessagingException me)
         {
             throw new EmailException(me);
+        }
+    }
+
+    private void getBodyContent(BodyPart body) throws MessagingException{
+        try
+        {
+            body.getContent();
+        }
+        catch (final IOException e) // NOPMD
+        {
+            // do nothing here.
+            // content will be set to an empty string as a result.
+            // (Should this really be rethrown as an email exception?)
+            // throw new EmailException(e);
         }
     }
 

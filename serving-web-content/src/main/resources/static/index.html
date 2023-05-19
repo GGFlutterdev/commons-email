@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Invia un'email</title>
+  <link rel="stylesheet" type="text/css" href="/css/emailpagestyle.css">
+</head>
+<body>
+  
+  <form method="post" action="/send-email" id="email-form">
+    <h2>Invia un'email</h2>
+    <label for="name">Mittente:</label>
+    <input type="text" id="mittente" name="mittente" required><br><br>
+
+    <label for="name">Destinatario:</label>
+    <input type="text" id="destinatario" name="destinatario" required><br><br>
+
+    <label for="name">Oggetto:</label>
+    <input type="text" id="oggetto" name="oggetto" required><br><br>
+    
+    <label for="message">Messaggio:</label><br>
+    <textarea id="message" name="message" rows="5" required></textarea><br><br>
+    
+    <input type="submit" value="Invia">
+  </form>
+</body>
+</html>
