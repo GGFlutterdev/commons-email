@@ -37,7 +37,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-email</artifactId>
+            <version>1.6</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/../target/commons-email-1.6.0-SNAPSHOT.jar</systemPath>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
