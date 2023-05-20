@@ -1,15 +1,15 @@
 package com.napoli.servingwebcontent;
 
+import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailException;
-import org.apache.commons.mail.HtmlEmail;
+import org.apache.commons.mail.SimpleEmail;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,39 +25,38 @@ public class GreetingController {
 	}
 
 	@PostMapping("/sendEmail")
-	public String greeting(@RequestParam(name="mittente", required=true) String mittente, @RequestParam(name="destinatario", required=true) String destinatario, @RequestParam(name="oggetto", required=true) String oggetto, @RequestParam(name="message", required=true) String message, Model model) {
+	public ResponseEntity<String> greeting(@RequestParam(name="mittente", required=true) String mittente, @RequestParam(name="destinatario", required=true) String destinatario, @RequestParam(name="oggetto", required=true) String oggetto, @RequestParam(name="message", required=true) String message, Model model) {
 		System.out.println(mittente+" "+destinatario+" "+oggetto+" "+message);
 		if (isValidEmail(mittente)){
 			if (isValidEmail(destinatario)){
-				HtmlEmail mail = new HtmlEmail();
+				SimpleEmail mail = new SimpleEmail();
 				try {
+					mail.setHostName("smtp.gmail.com");
+					mail.setAuthenticator(new DefaultAuthenticator("socialnotes2021@gmail.com", "fxyffsvvabkrvqrj"));
+					mail.setStartTLSEnabled(true);
+					mail.setSmtpPort(587);
 					mail.setFrom(mittente);
-					ArrayList<InternetAddress> destinatari = new ArrayList<>();
-					destinatari.add(new InternetAddress(destinatario));
-					mail.setTo(destinatari);
+					mail.addTo(destinatario);
 					mail.setSubject(oggetto);
 					mail.setMsg(message);
 					String idMessage = mail.send();
 					if (idMessage!=null) {
-						System.out.println("Messaggio inviato!");
-						return "Messaggio inviato";
+						return ResponseEntity.ok("Messaggio inviato!");
 					}
 					else
-						return "Messaggio non inviato";
+						return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Messaggio non inviato!");
 				} catch (EmailException e) {
-					throw new RuntimeException(e);
-				} catch (AddressException e) {
 					throw new RuntimeException(e);
 				}
 			}
 			else{
-				System.out.println("Mail destinatario non valida!");
-				return "Mail destinatario non valida!";
+				//System.out.println("Mail destinatario non valida!");
+				return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Mail destinatario non valida!");
 			}
 		}
 		else {
-			System.out.println("Mail mittente non valida!");
-			return "Mail mittente non valida!";
+			//System.out.println("Mail mittente non valida!");
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Mail mittente non valida!");
 		}
 	}
 
