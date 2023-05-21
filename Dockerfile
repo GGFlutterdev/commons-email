@@ -36,10 +36,10 @@ COPY serving-web-content ./serving-web-content
 RUN export _JAVA_OPTIONS="-Djavax.net.debug=all"
 
 #Run the commons-email pom
-RUN mvn clean package
+RUN mvn clean install
 
 #Run the web application pom
-RUN mvn clean install -f ./serving-web-content
+RUN mvn clean install -f ./serving-web-content/pom.xml
 
 # Compile the Java file of web application
 RUN javac ServingWebContentApplication.java
