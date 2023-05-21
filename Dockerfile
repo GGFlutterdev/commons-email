@@ -41,8 +41,8 @@ RUN mvn clean install
 #Run the web application pom
 RUN mvn clean install -f ./serving-web-content/pom.xml
 
-# Compile the Java file of web application
-RUN javac ./serving-web-content/src/main/java/com/napoli/servingwebcontent/ServingWebContentApplication.java
+#We expose the port on which our web application will run
+EXPOSE 8080
 
-# Set the command to execute the Java file
-CMD ["java", "./ServingWebContentApplication"]
+#We run the web application
+CMD ["java","-jar","./serving-web-content/target/serving-web-content-0.0.1-SNAPSHOT.jar"]
