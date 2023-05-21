@@ -42,7 +42,7 @@ RUN mvn clean install
 RUN mvn clean install -f ./serving-web-content/pom.xml
 
 # Compile the Java file of web application
-RUN javac ServingWebContentApplication.java
+RUN javac ./serving-web-content/src/main/java/com/napoli/servingwebcontent/ServingWebContentApplication.java
 
 # Set the command to execute the Java file
-CMD ["java", "ServingWebContentApplication"]
+CMD ["java", "./ServingWebContentApplication"]
