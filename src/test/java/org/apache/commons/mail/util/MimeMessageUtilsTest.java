@@ -247,7 +247,7 @@ public class MimeMessageUtilsTest {
         }
         else {
             //Path for Mac and Ubuntu
-            var3 = new MockFile("/Urs/luigialons-email/src/q:W~Zb4&7s#.Z(VKP^");
+            var3 = new MockFile("/Urs/luigialons:email/src/q:W~Zb4&7s#.Z(VKP^");
         }
 
         //try {
