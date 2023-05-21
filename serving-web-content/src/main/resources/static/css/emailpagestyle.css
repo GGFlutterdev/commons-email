@@ -1,69 +1,81 @@
 /* Stile del body */
 body {
-    font-family: Arial;
-    background-image: url("/images/email.jpg");
-    background-repeat: repeat;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  
-  
-  /* Stile del titolo */
-  h2 {
-    color: #333;
-  }
-  
-  /* Stile del form */
-  form {
-    max-width: 1200px; /* Aumenta la larghezza del form a tuo piacimento */
-    margin: auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Stile delle etichette */
-  label {
-    font-weight: bold;
-  }
-  
-  /* Stile degli input */
-  input[type="text"],
-  textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    resize: none; /* Prevent textarea from being resizable */
-  }
-  
-  /* Stile del pulsante di invio */
-  input[type="submit"] {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  /* Stile del pulsante di invio al passaggio del mouse */
-  input[type="submit"]:hover {
-    background-color: #45a049;
-  }
-  
-  /* Stile del messaggio di errore */
-  .error-message {
-    color: #ff0000;
-    margin-top: 5px;
-  }
-  
-  
+  font-family: Arial;
+  background-image: url("/images/email.jpg");
+  background-repeat: repeat;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Stile del titolo */
+h2 {
+  color: #333;
+}
+
+/* Stile del form */
+form {
+  max-width: 1200px; /* Aumenta la larghezza del form a tuo piacimento */
+  margin: auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Stile delle etichette */
+label {
+  font-weight: bold;
+}
+
+/* Stile degli input */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: none; /* Prevent textarea from being resizable */
+}
+
+/* Stile del pulsante di invio */
+input[type="submit"] {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Stile del pulsante di invio al passaggio del mouse */
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Stile del messaggio di errore */
+.error-message {
+  color: #ff0000;
+  margin-top: 5px;
+}
+
+/* Stile del footer */
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 10px 0;
+}
+
+footer p {
+  font-size: 12px;
+  color: #999;
+}
