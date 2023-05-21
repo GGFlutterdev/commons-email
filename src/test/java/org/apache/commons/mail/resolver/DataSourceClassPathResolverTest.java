@@ -21,7 +21,6 @@ import static org.junit.Assert.*;
 
 import org.apache.commons.mail.DataSourceResolver;
 import org.junit.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import java.io.IOException;
 
@@ -39,15 +38,15 @@ public class DataSourceClassPathResolverTest extends AbstractDataSourceResolverT
         DataSourceResolver dataSourceResolver;
 
         dataSourceResolver = new DataSourceClassPathResolver("/", true);
-        assertTrue(toByteArray(dataSourceResolver.resolve("images/asf_logo_wide.gif")).length == IMG_SIZE);
-        assertTrue(toByteArray(dataSourceResolver.resolve("./images/asf_logo_wide.gif")).length == IMG_SIZE);
-        assertTrue(toByteArray(dataSourceResolver.resolve("/images/asf_logo_wide.gif")).length == IMG_SIZE);
+        assertEquals(IMG_SIZE, toByteArray(dataSourceResolver.resolve("images/asf_logo_wide.gif")).length);
+        assertEquals(IMG_SIZE, toByteArray(dataSourceResolver.resolve("./images/asf_logo_wide.gif")).length);
+        assertEquals(IMG_SIZE, toByteArray(dataSourceResolver.resolve("/images/asf_logo_wide.gif")).length);
         assertNull(dataSourceResolver.resolve("/asf_logo_wide.gif"));
 
         dataSourceResolver = new DataSourceClassPathResolver("/images", true);
-        assertTrue(toByteArray(dataSourceResolver.resolve("asf_logo_wide.gif")).length == IMG_SIZE);
-        assertTrue(toByteArray(dataSourceResolver.resolve("./asf_logo_wide.gif")).length == IMG_SIZE);
-        assertTrue(toByteArray(dataSourceResolver.resolve("/asf_logo_wide.gif")).length == IMG_SIZE);
+        assertEquals(IMG_SIZE, toByteArray(dataSourceResolver.resolve("asf_logo_wide.gif")).length);
+        assertEquals(IMG_SIZE, toByteArray(dataSourceResolver.resolve("./asf_logo_wide.gif")).length);
+        assertEquals(IMG_SIZE, toByteArray(dataSourceResolver.resolve("/asf_logo_wide.gif")).length);
         assertNull(dataSourceResolver.resolve("./images/asf_logo_wide.gif"));
     }
 

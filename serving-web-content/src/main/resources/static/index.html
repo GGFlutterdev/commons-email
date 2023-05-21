@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Invia un'email</title>
+  <link rel="stylesheet" type="text/css" href="/css/emailpagestyle.css">
+  <link rel="icon" type="image/x-icon" href="./images/Web/icons8-send-email-pulsar-color-96.ico">
+</head>
+<body>
+  
+  <form method="post" action="/sendemail" method="post" id="email-form">
+    <h2>Invia un'email</h2>
+
+    <label for="destinatario">Destinatario:</label>
+    <input type="text" id="destinatario" name="destinatario" required><br><br>
+
+    <label for="oggetto">Oggetto:</label>
+    <input type="text" id="oggetto" name="oggetto" required><br><br>
+    
+    <label for="message">Messaggio:</label><br>
+    <textarea id="message" name="message" rows="5" required></textarea><br><br>
+    
+    <input type="submit" value="Invia">
+  </form>
+  
+  <!-- Include jQuery and SweetAlert libraries -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+    // Handle form submission
+    $('#email-form').submit(function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Get form data
+        var form = $(this);
+        var url = form.attr('action');
+        var formData = form.serialize();
+
+        // Submit form data using AJAX
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: formData,
+            dataType: 'json', // Set the response data type as JSON
+            success: function(response) {
+                if (response.hasOwnProperty('error')) {
+                    // Display error message as a popup
+                    swal('Errore!', response.error, 'error');
+                } else {
+                    // Display success message as a popup
+                    swal('Successo!', response.message, 'success');
+                }
+            },
+            error: function(xhr, status, error) {
+                // Display error message as a popup
+                swal('Errore!', xhr.responseText.substring(10, xhr.responseText.length-2), 'error');
+            }
+        });
+    });
+});
+
+</script>
+
+  <footer>
+    <p>Autori: Luigi Allocca, Rocco Iuliano, Simone Della Porta</p>
+    <p>Tutti i diritti sono riservati &copy; 2023</p>
+  </footer>
+</body>
+</html>

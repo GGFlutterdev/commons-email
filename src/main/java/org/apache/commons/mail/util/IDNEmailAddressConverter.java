@@ -40,14 +40,13 @@ public class IDNEmailAddressConverter
      */
     public String toASCII(final String email)
     {
-        final int idx = findAtSymbolIndex(email);
-
-        if (idx < 0)
-        {
+        if (email == null){
             return email;
         }
-
-        return getLocalPart(email, idx) + '@' + IDN.toASCII(getDomainPart(email, idx));
+        else {
+            final int idx = findAtSymbolIndex(email);
+            return idx == -1 ? email : getLocalPart(email, idx) + '@' + IDN.toASCII(getDomainPart(email, idx));
+        }
     }
 
     /**
@@ -69,14 +68,12 @@ public class IDNEmailAddressConverter
      */
     String toUnicode(final String email)
     {
-        final int idx = findAtSymbolIndex(email);
-
-        if (idx < 0)
-        {
+        if (email == null) {
             return email;
+        } else {
+            final int idx = findAtSymbolIndex(email);
+            return idx == -1 ? email : getLocalPart(email, idx) + '@' + IDN.toUnicode(getDomainPart(email, idx));
         }
-
-        return getLocalPart(email, idx) + '@' + IDN.toUnicode(getDomainPart(email, idx));
     }
 
     /**
@@ -86,7 +83,7 @@ public class IDNEmailAddressConverter
      * @param idx index of '@' character.
      * @return local part of email
      */
-    private String getLocalPart(final String email, final int idx)
+    String getLocalPart(final String email, final int idx)
     {
         return email.substring(0, idx);
     }

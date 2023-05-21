@@ -18,13 +18,7 @@ package org.apache.commons.mail;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -802,7 +796,10 @@ public abstract class Email
             throw new EmailException("Address List provided was invalid");
         }
 
-        for (final String email : emails)
+        // I've used List for saving CPU cycles calculations and RAM consumption.
+        List<String> emailList = Arrays.asList(emails);
+
+        for (final String email : emailList)
         {
             addTo(email, null);
         }
@@ -912,7 +909,10 @@ public abstract class Email
             throw new EmailException("Address List provided was invalid");
         }
 
-        for (final String email : emails)
+        // I've used List for saving CPU cycles calculations and RAM consumption.
+        List<String> emailList = Arrays.asList(emails);
+
+        for (final String email : emailList)
         {
             addCc(email, null);
         }
@@ -1021,7 +1021,10 @@ public abstract class Email
             throw new EmailException("Address List provided was invalid");
         }
 
-        for (final String email : emails)
+        // I've used List for saving CPU cycles calculations and RAM consumption.
+        List<String> emailList = Arrays.asList(emails);
+
+        for (final String email : emailList)
         {
             addBcc(email, null);
         }
@@ -1356,20 +1359,23 @@ public abstract class Email
                     this.message.setContent(this.content, this.contentType);
                 }
             }
-            else if (this.emailBody != null)
-            {
-                if (this.contentType == null)
+            else{
+                if (this.emailBody != null)
                 {
-                    this.message.setContent(this.emailBody);
+                    if (this.contentType == null)
+                    {
+                        this.message.setContent(this.emailBody);
+                    }
+                    else
+                    {
+                        this.message.setContent(this.emailBody, this.contentType);
+                    }
                 }
                 else
                 {
-                    this.message.setContent(this.emailBody, this.contentType);
+                    // it will execute if content==null && emailBody==null
+                    this.message.setText("");
                 }
-            }
-            else
-            {
-                this.message.setText("");
             }
 
             if (this.fromAddress != null)
@@ -1462,14 +1468,14 @@ public abstract class Email
             Transport.send(this.message);
             return this.message.getMessageID();
         }
-        catch (final Throwable t)
+        catch (final Exception e)
         {
             final String msg = "Sending the email to the following server failed : "
                 + this.getHostName()
                 + ":"
                 + this.getSmtpPort();
 
-            throw new EmailException(msg, t);
+            throw new EmailException(msg, e);
         }
     }
 

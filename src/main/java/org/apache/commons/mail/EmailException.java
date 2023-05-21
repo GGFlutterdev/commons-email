@@ -21,6 +21,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
+import java.util.logging.Logger;
 
 /**
  * Exception thrown when a checked error occurs in commons-email.
@@ -37,6 +38,9 @@ public class EmailException
 {
     /** Serializable version identifier. */
     private static final long serialVersionUID = 5550674499282474616L;
+
+    /** Logger instance */
+    private static final Logger logger = Logger.getLogger(EmailException.class.getName());
 
     /**
      * Constructs a new {@code EmailException} with no
@@ -88,7 +92,10 @@ public class EmailException
     @Override
     public void printStackTrace()
     {
-        printStackTrace(System.err);
+        logger.severe("Stack trace:");
+        for (StackTraceElement element : getStackTrace()) {
+            logger.severe(element.toString());
+        }
     }
 
     /**

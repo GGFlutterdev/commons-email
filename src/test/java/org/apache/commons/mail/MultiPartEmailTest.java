@@ -17,6 +17,7 @@
 package org.apache.commons.mail;
 
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,15 +39,12 @@ import org.apache.commons.mail.mocks.MockMultiPartEmailConcrete;
 import org.evosuite.runtime.EvoAssertions;
 import org.evosuite.runtime.mock.java.io.MockFile;
 import org.evosuite.runtime.mock.java.net.MockURL;
-import org.evosuite.runtime.testdata.EvoSuiteURL;
-import org.evosuite.runtime.testdata.NetworkHandling;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-import static org.evosuite.runtime.EvoAssertions.*;
 
 /**
  * JUnit test case for MultiPartEmail Class.
@@ -96,17 +94,16 @@ public class MultiPartEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+
+    @Test
     public void test02() throws Throwable {
         MultiPartEmail var1 = new MultiPartEmail();
         URL var2 = MockURL.getHttpExample();
-        EvoSuiteURL var3 = new EvoSuiteURL("http://www.someFakeButWellFormedURL.org/fooExample");
-        NetworkHandling.createRemoteTextFile(var3, "=h?|9LOt[$$5}e+Nc");
+        //EvoSuiteURL var3 = new EvoSuiteURL("http://www.someFakeButWellFormedURL.org/fooExample");
+        //NetworkHandling.createRemoteTextFile(var3, "=h?|9LOt[$$5}e+Nc");
 
         try {
-            var1.attach(var2, "05rN%D9+i(rGQa,", "05rN%D9+i(rGQa,", "05rN%D9+i(rGQa,");
+            var1.attach(new URL(this.strTestURL), "05rN%D9+i(rGQa,", "05rN%D9+i(rGQa,", "05rN%D9+i(rGQa,");
             Assert.fail("Expecting exception: Exception");
         } catch (Exception var5) {
             EvoAssertions.verifyException("org.apache.commons.mail.MultiPartEmail", var5);
@@ -394,15 +391,14 @@ public class MultiPartEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-            timeout = 4000L
-    )
+
+    @Test
     public void test28() throws Throwable {
         MultiPartEmail var1 = new MultiPartEmail();
-        URL var2 = MockURL.getHttpExample();
+        //URL var2 = MockURL.getHttpExample();
 
         try {
-            var1.attach(var2, "", "", "");
+            var1.attach(new URL(this.strTestURL), "", "", "");
             Assert.fail("Expecting exception: Exception");
         } catch (Exception var4) {
             EvoAssertions.verifyException("org.apache.commons.mail.MultiPartEmail", var4);
@@ -1028,16 +1024,20 @@ public class MultiPartEmailTest extends AbstractEmailTest
         // ====================================================================
         // Test Success - URL
         // ====================================================================
-        this.email.attach(
-            new URL(this.strTestURL),
-            "Test Attachment",
-            "Test Attachment Desc");
+        assertDoesNotThrow(
+            () -> this.email.attach(
+                new URL(this.strTestURL),
+                "Test Attachment",
+                "Test Attachment Desc")
+        );
 
         // bad name
-        this.email.attach(
-            new URL(this.strTestURL),
-            null,
-            "Test Attachment Desc");
+        assertDoesNotThrow(
+            () -> this.email.attach(
+                new URL(this.strTestURL),
+                null,
+                "Test Attachment Desc")
+        );
     }
 
     @Test

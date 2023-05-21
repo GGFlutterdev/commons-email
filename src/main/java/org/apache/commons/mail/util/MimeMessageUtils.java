@@ -103,20 +103,11 @@ public final class MimeMessageUtils
     public static MimeMessage createMimeMessage(final Session session, final String source)
         throws MessagingException, IOException
     {
-        ByteArrayInputStream is = null;
+        final byte[] byteSource = source.getBytes(Charset.defaultCharset());
 
-        try
+        try(ByteArrayInputStream is = new ByteArrayInputStream(byteSource))
         {
-            final byte[] byteSource = source.getBytes(Charset.defaultCharset());
-            is = new ByteArrayInputStream(byteSource);
             return createMimeMessage(session, is);
-        }
-        finally
-        {
-            if (is != null)
-            {
-                is.close();
-            }
         }
     }
 

@@ -20,12 +20,16 @@ package org.apache.commons.mail;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.security.SecureRandom;
+import java.util.Arrays;
 import java.util.BitSet;
+import java.util.List;
 import java.util.Random;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.mail.util.MimeMessageUtils;
 
 /**
@@ -48,7 +52,7 @@ final class EmailUtils
      * Random object used by random method. This has to be not local to the random method
      * so as to not return the same value in the same millisecond.
      */
-    private static final Random RANDOM = new Random();
+    private static final SecureRandom RANDOM = new SecureRandom();
 
     /**
      * The default charset used for URL encoding.
@@ -73,16 +77,16 @@ final class EmailUtils
     // Static initializer for safe_uri
     static {
         // alpha characters
-        for (int i = 'a'; i <= 'z'; i++)
+        for (int i = 'a'; i <= 'z'; ++i)
         {
             SAFE_URL.set(i);
         }
-        for (int i = 'A'; i <= 'Z'; i++)
+        for (int i = 'A'; i <= 'Z'; ++i)
         {
             SAFE_URL.set(i);
         }
         // numeric characters
-        for (int i = '0'; i <= '9'; i++)
+        for (int i = '0'; i <= '9'; ++i)
         {
             SAFE_URL.set(i);
         }
@@ -212,57 +216,51 @@ final class EmailUtils
         final boolean letters,
         final boolean numbers,
         final char [] chars,
-        final Random random)
+        final SecureRandom random)
     {
         if (count == 0)
         {
             return "";
         }
-        if (count < 0)
+        else if (count < 0)
         {
             throw new IllegalArgumentException("Requested random string length " + count + " is less than 0.");
         }
+        else {
 
-        if (start == 0 && end == 0)
-        {
-            end = 'z' + 1;
-            start = ' ';
+            if (start == 0 && end == 0) {
+                end = 'z' + 1;
+                start = ' ';
 
-            if (!letters && !numbers)
-            {
-                start = 0;
-                end = Integer.MAX_VALUE;
+                if (!letters && !numbers) {
+                    start = 0;
+                    end = Integer.MAX_VALUE;
+                }
             }
+
+            final StringBuilder buffer = new StringBuilder("");
+            final int gap = end - start;
+
+            while (count != 0) {
+                --count;
+                char ch;
+
+                if (chars == null) {
+                    ch = (char) (random.nextInt(gap) + start);
+                } else {
+                    ch = chars[random.nextInt(gap) + start];
+                }
+
+                if (letters && numbers && Character.isLetterOrDigit(ch) || letters && Character.isLetter(ch)
+                        || numbers && Character.isDigit(ch) || !letters && !numbers) {
+                    buffer.append(ch);
+                } else {
+                    ++count;
+                }
+            }
+
+            return buffer.toString();
         }
-
-        final StringBuilder buffer = new StringBuilder();
-        final int gap = end - start;
-
-        while (count-- != 0)
-        {
-            char ch;
-
-            if (chars == null)
-            {
-                ch = (char) (random.nextInt(gap) + start);
-            }
-            else
-            {
-                ch = chars[random.nextInt(gap) + start];
-            }
-
-            if (letters && numbers && Character.isLetterOrDigit(ch) || letters && Character.isLetter(ch)
-                            || numbers && Character.isDigit(ch) || !letters && !numbers)
-            {
-                buffer.append(ch);
-            }
-            else
-            {
-                count++;
-            }
-        }
-
-        return buffer.toString();
     }
 
     /**
@@ -291,10 +289,16 @@ final class EmailUtils
             return null;
         }
 
-        final StringBuilder builder = new StringBuilder();
-        for (final byte c : input.getBytes(US_ASCII))
+        final StringBuilder builder = new StringBuilder("");
+
+        //Using List instead of Arrays with Foreach save CPU cycles calculations and RAM consumption.
+        byte[] arrayBytes = input.getBytes(US_ASCII);
+        Byte[] arrayWrapper = ArrayUtils.toObject(arrayBytes);
+        List<Byte> listByte = Arrays.asList(arrayWrapper);
+
+        for (Byte c : listByte)
         {
-            int b = c;
+            int b = c.intValue();
             if (b < 0)
             {
                 b = 256 + b;

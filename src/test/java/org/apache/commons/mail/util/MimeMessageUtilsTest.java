@@ -18,7 +18,6 @@ package org.apache.commons.mail.util;
 
 import org.evosuite.runtime.EvoAssertions;
 import org.evosuite.runtime.mock.java.io.MockFile;
-import org.evosuite.runtime.testdata.FileSystemHandling;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -26,6 +25,9 @@ import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class MimeMessageUtilsTest {
@@ -58,18 +60,23 @@ public class MimeMessageUtilsTest {
             expected = IOException.class
     )
     public void test03() throws Throwable {
-        MockFile var1 = new MockFile("./E4\"PpYbVN<", "E4\"PpYbVN<");
-        var1.mkdirs();
+        String os = System.getProperty("os.name").toLowerCase();
+        MockFile var1 = null;
+        if (os.contains("win")) {
+            //Path for windows
+            var1 = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
+        }
+        else {
+            //Path for Mac and Ubuntu
+            var1 = new MockFile("/Urs/luigialons-email/src/q:W~Zb4&7s#.Z(VKP^");
+        }
 
-        // L'eccezione che deve essere generata è IOException perchè non è possibile creare una cartella con "+
-        // Quindi ho modificato l'oracolo (cioè l'eccezione aspettata)
-
-        //try {
+        try {
             MimeMessageUtils.writeMimeMessage((MimeMessage)null, var1);
             Assert.fail("Expecting exception: FileNotFoundException");
-        /*} catch (FileNotFoundException var3) {
+        } catch (FileNotFoundException var3) {
             EvoAssertions.verifyException("org.evosuite.runtime.mock.java.io.MockFileOutputStream", var3);
-        }*/
+        }
 
     }
 
@@ -183,21 +190,21 @@ public class MimeMessageUtilsTest {
 
     }*/
 
-    /*
+
         //PROBLEMA: il test effettua una assert su un codice che rappresenta il tempo
-    @Test
+    /*@Test
     public void test12() throws Throwable {
-        MockFile var1 = new MockFile("./target/org.apache.commons.mail.DefaultAuthenticator", "org.apache.commons.mail.DefaultAuthenticator");
+        MockFile var1 = new MockFile("./src/test/java/org.apache.commons.mail.DefaultAuthenticator", "org.apache.commons.mail.DefaultAuthenticator");
         Properties var2 = new Properties();
         Session var3 = Session.getInstance(var2);
-        MimeMessage var4 = MimeMessageUtils.createMimeMessage(var3, "./target/org.apache.commons.mail.DefaultAuthenticator");
+        MimeMessage var4 = MimeMessageUtils.createMimeMessage(var3, "./src/test/java/org.apache.commons.mail.DefaultAuthenticator");
         MimeMessage var5 = new MimeMessage(var4);
         long before = System.currentTimeMillis();
         MimeMessageUtils.writeMimeMessage(var5, var1);
         long now = System.currentTimeMillis();
         Assert.assertTrue(var1.lastModified()>=before && var1.lastModified()<=now);
         var1.delete();
-        File directory = new File("./target/org.apache.commons.mail.DefaultAuthenticator");
+        File directory = new File("./src/test/java/org.apache.commons.mail.DefaultAuthenticator");
         directory.delete();
         // Il valore di confronto non è corretto
         //Assert.assertEquals(1392409281320L, var1.lastModified())
@@ -227,13 +234,21 @@ public class MimeMessageUtilsTest {
         Assert.assertNotNull(var4);
     }
 
-    /*
     @Test
     public void test15() throws Throwable {
         byte[] var1 = new byte[4];
         MimeMessage var2 = MimeMessageUtils.createMimeMessage((Session)null, var1);
         // Il test deve verificare che viene lanciata una IOException perchè le cartelle non sono state generate
-        MockFile var3 = new MockFile("./target/4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
+        String os = System.getProperty("os.name").toLowerCase();
+        MockFile var3 = null;
+        if (os.contains("win")) {
+            //Path for windows
+            var3 = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
+        }
+        else {
+            //Path for Mac and Ubuntu
+            var3 = new MockFile("/Urs/luigialons-email/src/q:W~Zb4&7s#.Z(VKP^");
+        }
 
         try {
             MimeMessageUtils.writeMimeMessage(var2, var3);
@@ -241,7 +256,7 @@ public class MimeMessageUtilsTest {
         } catch (IOException var5) {
             EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
         }
+    }
 
-    }*/
 
 }
