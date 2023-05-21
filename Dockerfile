@@ -36,7 +36,7 @@ COPY serving-web-content ./serving-web-content
 RUN export _JAVA_OPTIONS="-Djavax.net.debug=all"
 
 #Run the commons-email pom
-RUN mvn clean install
+RUN mvn clean install -f ./pom.xml
 
 #Run the web application pom
 RUN mvn clean install -f ./serving-web-content/pom.xml
