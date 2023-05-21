@@ -16,7 +16,7 @@
 # syntax=docker/dockerfile:1
 
 #We specified the maven version and jdk version that we want in our image
-FROM maven:3.8.4-jdk-11-slim AS build
+FROM maven:3.8.4-jdk-17 AS build
 
 #We created a directory
 WORKDIR /app
@@ -30,4 +30,19 @@ COPY pom.xml ./
 #We copied the conf directory in the image
 COPY conf ./conf
 
+#We copied the web application directory in the image
+COPY serving-web-content ./serving-web-content
+
+RUN export _JAVA_OPTIONS="-Djavax.net.debug=all"
+
+#Run the commons-email pom
 RUN mvn clean package
+
+#Run the web application pom
+RUN mvn clean install -f ./serving-web-content
+
+# Compile the Java file of web application
+RUN javac ServingWebContentApplication.java
+
+# Set the command to execute the Java file
+CMD ["java", "ServingWebContentApplication"]
