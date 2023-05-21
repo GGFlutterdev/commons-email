@@ -16,7 +16,7 @@
 # syntax=docker/dockerfile:1
 
 #We specified the maven version and jdk version that we want in our image
-FROM maven:3.8.4-jdk-17 AS build
+FROM maven:3.8.4-jdk-17-slim AS build
 
 #We created a directory
 WORKDIR /app
