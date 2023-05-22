@@ -1213,7 +1213,7 @@ public class HtmlEmailTest extends AbstractEmailTest
     @Test
     public void test45() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
-        var1.embed((DataSource)null, "' is already bound to file ");
+        assertDoesNotThrow(() -> var1.embed((DataSource)null, "' is already bound to file "));
     }
 
     //Test case generato senza assert

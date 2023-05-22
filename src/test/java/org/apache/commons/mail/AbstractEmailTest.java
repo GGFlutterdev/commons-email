@@ -245,8 +245,8 @@ public abstract class AbstractEmailTest
         final boolean boolSaveToFile)
         throws IOException
     {
-        assertEquals("mail server doesn't contain expected message",
-                mailServer.getMessages().size(), 1);
+        assertEquals("mail server doesn't contain expected message", 1,
+                mailServer.getMessages().size());
         final WiserMessage emailMessage = mailServer.getMessages().get(0);
 
         if (boolSaveToFile)
