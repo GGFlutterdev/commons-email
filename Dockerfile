@@ -36,10 +36,13 @@ COPY serving-web-content ./serving-web-content
 RUN export _JAVA_OPTIONS="-Djavax.net.debug=all"
 
 #Run the commons-email pom
-RUN mvn clean install
+RUN mvn clean package
+
+#Copy the dependency of web application
+RUN mvn dependency:copy -f ./serving-web-content/pom.xml
 
 #Run the web application pom
-RUN mvn clean install -f ./serving-web-content/pom.xml
+RUN mvn clean package -f ./serving-web-content/pom.xml
 
 #We expose the port on which our web application will run
 EXPOSE 8080
