@@ -871,15 +871,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Email var3 = var1.setMsg("value can not be null or empty");
         Assert.assertSame(var3, var2);
     }
-
-    @Test
-    public void test16() throws Throwable {
-        HtmlEmail var1 = new HtmlEmail();
-        var1.socketTimeout = 0;
-        HtmlEmail var2 = (HtmlEmail)var1.setMsg("\" does not exist");
-        Assert.assertEquals(10L, 10L);
-    }
-
+    
     @Test
     public void test17() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();

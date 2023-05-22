@@ -20,12 +20,7 @@ import static org.junit.Assert.*;
 
 import org.apache.commons.mail.DataSourceResolver;
 import org.evosuite.runtime.EvoAssertions;
-import org.evosuite.runtime.ViolatedAssumptionAnswer;
 import org.evosuite.runtime.mock.java.net.MockURL;
-import org.evosuite.runtime.testdata.EvoSuiteURL;
-import org.evosuite.runtime.testdata.NetworkHandling;
-import org.evosuite.shaded.org.mockito.Mockito;
-import org.evosuite.shaded.org.mockito.exceptions.base.MockitoException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -34,7 +29,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLStreamHandler;
 
 /**
  * JUnit test case for DataSourceUrlResolver.
