@@ -18,7 +18,6 @@ on:
   push:
     branches:
       - master
-      - refactoring
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
