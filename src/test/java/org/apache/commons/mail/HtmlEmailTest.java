@@ -881,6 +881,13 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test
+    public void test16() throws Throwable {
+        HtmlEmail var1 = new HtmlEmail();
+        var1.socketTimeout = 0;
+        assertDoesNotThrow(() -> var1.setMsg("\" does not exist"));
+    }
+
+    @Test
     public void test17() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSocketTimeout(-1160);
