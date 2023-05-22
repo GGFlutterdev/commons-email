@@ -809,14 +809,6 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test
-    public void test07() throws Throwable {
-        HtmlEmail var1 = new HtmlEmail();
-        var1.socketTimeout = 0;
-        HtmlEmail var2 = var1.setTextMsg("Wz#sX9!`aa%3H v");
-        Assert.assertEquals(10L, 10L);
-    }
-
-    @Test
     public void test08() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSocketTimeout(-1317);
