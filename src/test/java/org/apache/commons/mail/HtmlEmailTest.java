@@ -21,6 +21,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.io.File;
@@ -809,6 +810,13 @@ public class HtmlEmailTest extends AbstractEmailTest
     }
 
     @Test
+    public void test07() throws Throwable {
+        HtmlEmail var1 = new HtmlEmail();
+        var1.socketTimeout = 0;
+        assertDoesNotThrow(() -> var1.setTextMsg("Wz#sX9!`aa%3H v"));
+    }
+
+    @Test
     public void test08() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.setSocketTimeout(-1317);
@@ -871,7 +879,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         Email var3 = var1.setMsg("value can not be null or empty");
         Assert.assertSame(var3, var2);
     }
-    
+
     @Test
     public void test17() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
