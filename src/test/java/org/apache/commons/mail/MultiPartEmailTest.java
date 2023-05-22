@@ -100,15 +100,12 @@ public class MultiPartEmailTest extends AbstractEmailTest
         MultiPartEmail var1 = new MultiPartEmail();
         //EvoSuiteURL var3 = new EvoSuiteURL("http://www.someFakeButWellFormedURL.org/fooExample");
         //NetworkHandling.createRemoteTextFile(var3, "=h?|9LOt[$$5}e+Nc");
-
+        URL url = new URL(this.strTestURL);
         try {
-            URL url = new URL(this.strTestURL);
             var1.attach(url, "05rN%D9+i(rGQa,", "05rN%D9+i(rGQa,", "05rN%D9+i(rGQa,");
-            Assert.fail("Expecting exception: EmailEsception");
+            Assert.fail("Expecting exception: EmailException");
         } catch (EmailException var5) {
             EvoAssertions.verifyException("org.apache.commons.mail.MultiPartEmail", var5);
-        } catch (MalformedURLException e){
-            EvoAssertions.verifyException("org.apache.commons.mail.MultiPartEmail", e);
         }
 
     }
