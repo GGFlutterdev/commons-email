@@ -236,7 +236,7 @@ public class MimeMessageUtilsTest {
         Assert.assertNotNull(var4);
     }
 
-    /*
+
     @Test(expected = IOException.class)
     public void test15() throws Throwable {
         byte[] var1 = new byte[4];
@@ -256,10 +256,10 @@ public class MimeMessageUtilsTest {
         //try {
             MimeMessageUtils.writeMimeMessage(var2, var3);
             Assert.fail("Expecting exception: IOException");
-        } catch (IOException var5) {
-            EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
-        }
+        //} catch (IOException var5) {
+            //EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils");
+        //}
     }
-*/
+
 
 }
