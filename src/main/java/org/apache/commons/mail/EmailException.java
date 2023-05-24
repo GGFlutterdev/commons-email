@@ -96,7 +96,9 @@ public class EmailException
     public void printStackTrace()
     {
         logger.severe("Stack trace:");
-        for (StackTraceElement element : getStackTrace()) {
+        StackTraceElement[] errorElements = getStackTrace();
+        ArrayList<StackTraceElement> elements = new ArrayList<>(Arrays.asList(errorElements));;
+        for (StackTraceElement element : elements) {
             logger.severe(element.toString());
         }
     }
