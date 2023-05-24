@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Dockerfile supporting linux/arm64 architecture
 # syntax=docker/dockerfile:1
 
 #We specified the maven version and jdk version that we want in our image
