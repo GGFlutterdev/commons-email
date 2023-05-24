@@ -133,8 +133,6 @@ public class ByteArrayDataSource implements DataSource
     private void byteArrayDataSource(final InputStream aIs)
         throws IOException
     {
-        //BufferedInputStream bis = null;
-        //BufferedOutputStream osWriter = null;
         baos = new ByteArrayOutputStream();
         try(BufferedInputStream bis = new BufferedInputStream(aIs);
         BufferedOutputStream osWriter = new BufferedOutputStream(baos))

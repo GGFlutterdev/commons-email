@@ -797,16 +797,12 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertTrue(var2.isSSLOnConnect());
     }
 
-    @Test(
-
-            expected = EmailException.class
-    )
+    @Test(expected = EmailException.class)
     public void test06() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         EmailAttachment var2 = new EmailAttachment();
         var1.attach(var2);
         HtmlEmail var3 = var1.setTextMsg("W;?O)Q^w>>K{l}|K");
-        Assert.assertFalse(var3.isSSLCheckServerIdentity());
     }
 
     @Test
@@ -943,16 +939,12 @@ public class HtmlEmailTest extends AbstractEmailTest
         Assert.assertEquals(60000L, (long)var2.getSocketTimeout());
     }
 
-    @Test(
-
-            expected = EmailException.class
-    )
+    @Test(expected = EmailException.class)
     public void test24() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         EmailAttachment var2 = new EmailAttachment();
         MultiPartEmail var3 = var1.attach(var2);
         HtmlEmail var4 = var1.setHtmlMsg("inline");
-        Assert.assertSame(var4, var3);
     }
 
     @Test

@@ -21,6 +21,8 @@ import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 /**
@@ -93,7 +95,8 @@ public class EmailException
     public void printStackTrace()
     {
         logger.severe("Stack trace:");
-        for (StackTraceElement element : getStackTrace()) {
+        ArrayList<StackTraceElement> elements = (ArrayList<StackTraceElement>) Arrays.asList(getStackTrace());
+        for (StackTraceElement element : elements) {
             logger.severe(element.toString());
         }
     }
