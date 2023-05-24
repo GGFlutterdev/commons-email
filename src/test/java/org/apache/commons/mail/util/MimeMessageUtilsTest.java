@@ -250,15 +250,10 @@ public class MimeMessageUtilsTest {
         }
         else {
             //Path for Mac and Ubuntu
-            var3 = new MockFile("/Urs/luigialons:email/src/q:W~Zb4&7s#.Z(VKP^");
+            var3 = new MockFile("/Urs/luigialons:email!!/src","q:W~Zb4&7s#.Z(VKP^");
         }
-
-        //try {
-            MimeMessageUtils.writeMimeMessage(var2, var3);
-            Assert.fail("Expecting exception: IOException");
-        //} catch (IOException var5) {
-            //EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils");
-        //}
+        MimeMessageUtils.writeMimeMessage(var2, var3);
+        Assert.fail("Expecting exception: IOException");
     }
 
 
