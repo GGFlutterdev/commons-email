@@ -38,14 +38,13 @@ RUN export _JAVA_OPTIONS="-Djavax.net.debug=all"
 #Run the commons-email pom
 RUN mvn clean package
 
-#Copy the dependency of web application
-RUN mvn dependency:copy -f ./serving-web-content/pom.xml
-
 #Run the web application pom
-RUN mvn clean package -f ./serving-web-content/pom.xml
+RUN mvn clean install -f ./serving-web-content/pom.xml
+
+WORKDIR /app/serving-web-content
 
 #We expose the port on which our web application will run
 EXPOSE 8080
 
 #We run the web application
-CMD ["java","-jar","./serving-web-content/target/serving-web-content-0.0.1-SNAPSHOT.jar"]
+CMD ["mvn", "spring-boot:run"]
