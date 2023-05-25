@@ -188,8 +188,10 @@ public class MimeMessageUtilsTest {
     public void test15() throws Throwable {
         byte[] var1 = new byte[4];
         MimeMessage var2 = MimeMessageUtils.createMimeMessage((Session) null, var1);
-    
+
         String os = System.getProperty("os.name").toLowerCase();
+        System.out.println(os);
+
         if (os.contains("win")) {
             final MockFile mockfile = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
             try {
@@ -199,9 +201,9 @@ public class MimeMessageUtilsTest {
                 EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
             }
         } else if (os.contains("linux")) {
-            final MockFile mockfile = new MockFile("/Urs/luigialons:email!!/src", "q:W~Zb4&7s#.Z(VKP^");
+            final MockFile mockfile = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
             assertDoesNotThrow(() -> MimeMessageUtils.writeMimeMessage(var2, mockfile));
-        } else if(os.contains("mac")){
+        } else {
             final MockFile mockfile = new MockFile("/Urs/luigialons:email!!/src", "q:W~Zb4&7s#.Z(VKP^");
             try {
                 MimeMessageUtils.writeMimeMessage(var2, mockfile);
@@ -209,12 +211,7 @@ public class MimeMessageUtilsTest {
             } catch (IOException var5) {
                 EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
             }
-        } else {
-            // Additional code block to cover the default behavior for unrecognized operating systems
-            final MockFile mockfile = new MockFile("/default/path", "defaultPassword");
-            assertThrows(IOException.class, () -> MimeMessageUtils.writeMimeMessage(var2, mockfile));
         }
     }
-    
 
 }
