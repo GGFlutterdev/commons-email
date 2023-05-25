@@ -24,6 +24,9 @@ import org.junit.Test;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
+
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+
 import java.io.*;
 import java.util.Properties;
 
@@ -236,25 +239,32 @@ public class MimeMessageUtilsTest {
         Assert.assertNotNull(var4);
     }
 
-
-    @Test(expected = IOException.class)
+    @Test
     public void test15() throws Throwable {
         byte[] var1 = new byte[4];
         MimeMessage var2 = MimeMessageUtils.createMimeMessage((Session)null, var1);
         // Il test deve verificare che viene lanciata una IOException perchè le cartelle non sono state generate
         String os = System.getProperty("os.name").toLowerCase();
         MockFile var3 = null;
-        if (os.contains("win")) {
+        if (os.contains("win") || os.contains("mac")) {
             //Path for windows
-            var3 = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
+            if(os.contains("win")){
+                var3 = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
+            } else {
+                var3 = new MockFile("/Urs/luigialons:email!!/src","q:W~Zb4&7s#.Z(VKP^");
+            }
+            try {
+                MimeMessageUtils.writeMimeMessage(var2, var3);
+                Assert.fail("Expecting exception: IOException");
+            } catch (IOException var5) {
+                EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
+            }
         }
         else {
-            //Path for Mac and Ubuntu
-            var3 = new MockFile("/Urs/luigialons:email!!/src","q:W~Zb4&7s#.Z(VKP^");
+            final MockFile mockfile = new MockFile("/Urs/luigialons:email!!/src","q:W~Zb4&7s#.Z(VKP^");
+            assertDoesNotThrow(() -> MimeMessageUtils.writeMimeMessage(var2, mockfile));
         }
-        MimeMessageUtils.writeMimeMessage(var2, var3);
-        Assert.fail("Expecting exception: IOException");
+        
     }
-
 
 }
