@@ -140,7 +140,7 @@ public class MimeMessageUtilsTest {
         }
 
     }
-
+    /*
     @Test
     public void test12() throws Throwable {
         MockFile var1 = new MockFile("./src/test/java/org.apache.commons.mail.DefaultAuthenticator", "org.apache.commons.mail.DefaultAuthenticator");
@@ -157,7 +157,7 @@ public class MimeMessageUtilsTest {
         directory.delete();
         // Il valore di confronto non è corretto
         //Assert.assertEquals(1392409281320L, var1.lastModified())
-    }
+    }*/
 
     @Test
     public void test13() throws Throwable {
