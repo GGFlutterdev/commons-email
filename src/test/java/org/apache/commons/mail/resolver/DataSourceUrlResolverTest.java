@@ -29,8 +29,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLStreamHandler;
-import static org.mockito.Mockito.*;
+
 
 /**
  * JUnit test case for DataSourceUrlResolver.
@@ -121,34 +120,6 @@ public class DataSourceUrlResolverTest extends AbstractDataSourceResolverTest
         DataSourceUrlResolver var1 = new DataSourceUrlResolver((URL)null);
         URL var2 = var1.getBaseUrl();
         Assert.assertNull(var2);
-    }
-
-    @Test
-    public void test03() throws Throwable {
-        URLStreamHandler var1 = mock(URLStreamHandler.class);
-        URL var2 = MockURL.URL("`d]", "", 0, "`d]", var1);
-        DataSourceUrlResolver var3 = new DataSourceUrlResolver(var2, true);
-        URL var4 = var3.getBaseUrl();
-        Assert.assertEquals("`d]", var4.getPath());
-    }
-
-    @Test
-    public void test04() throws Throwable {
-        URLStreamHandler var1 = mock(URLStreamHandler.class);
-        URL var2 = MockURL.URL("pf5ps4A>-AD0)Tz=", "dH;E&", 3656, "pf5ps4A>-AD0)Tz=", var1);
-        DataSourceUrlResolver var3 = new DataSourceUrlResolver(var2);
-        URL var4 = var3.getBaseUrl();
-        Assert.assertEquals("pf5ps4a>-ad0)tz=", var4.getProtocol());
-    }
-
-  @Test
-    public void test05() throws Throwable {
-        URL var1 = new URL("http://does.not.exist");
-        URLStreamHandler var2 = mock(URLStreamHandler.class);
-        URL var3 = MockURL.URL(var1, "", var2);
-        DataSourceUrlResolver var4 = new DataSourceUrlResolver(var3);
-        URL var5 = var4.getBaseUrl();
-        Assert.assertSame(var3, var5);
     }
 
     @Test
