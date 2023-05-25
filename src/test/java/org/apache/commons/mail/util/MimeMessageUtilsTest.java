@@ -25,6 +25,7 @@ import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import java.io.*;
@@ -186,9 +187,11 @@ public class MimeMessageUtilsTest {
     @Test
     public void test15() throws Throwable {
         byte[] var1 = new byte[4];
-        MimeMessage var2 = MimeMessageUtils.createMimeMessage((Session)null, var1);
-        // Il test deve verificare che viene lanciata una IOException perchè le cartelle non sono state generate
+        MimeMessage var2 = MimeMessageUtils.createMimeMessage((Session) null, var1);
+    
         String os = System.getProperty("os.name").toLowerCase();
+        System.out.println(os);
+    
         if (os.contains("win")) {
             final MockFile mockfile = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
             try {
@@ -200,9 +203,8 @@ public class MimeMessageUtilsTest {
         } else if (os.contains("linux")) {
             final MockFile mockfile = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
             assertDoesNotThrow(() -> MimeMessageUtils.writeMimeMessage(var2, mockfile));
-        }
-        else {
-            final MockFile mockfile = new MockFile("/Urs/luigialons:email!!/src","q:W~Zb4&7s#.Z(VKP^");
+        } else {
+            final MockFile mockfile = new MockFile("/Urs/luigialons:email!!/src", "q:W~Zb4&7s#.Z(VKP^");
             try {
                 MimeMessageUtils.writeMimeMessage(var2, mockfile);
                 Assert.fail("Expecting exception: IOException");
@@ -210,6 +212,11 @@ public class MimeMessageUtilsTest {
                 EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
             }
         }
+    
+        // Additional code block to cover the default behavior for unrecognized operating systems
+        final MockFile mockfile = new MockFile("/default/path", "defaultPassword");
+        assertThrows(IOException.class, () -> MimeMessageUtils.writeMimeMessage(var2, mockfile));
     }
+    
 
 }
