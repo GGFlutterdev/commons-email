@@ -245,12 +245,10 @@ public class MimeMessageUtilsTest {
         MimeMessage var2 = MimeMessageUtils.createMimeMessage((Session)null, var1);
         // Il test deve verificare che viene lanciata una IOException perchè le cartelle non sono state generate
         String os = System.getProperty("os.name").toLowerCase();
-        MockFile var3 = null;
         if (os.contains("win")) {
-            //Path for windows
-            var3 = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
+            final MockFile mockfile = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
             try {
-                MimeMessageUtils.writeMimeMessage(var2, var3);
+                MimeMessageUtils.writeMimeMessage(var2, mockfile);
                 Assert.fail("Expecting exception: IOException");
             } catch (IOException var5) {
                 EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
@@ -258,16 +256,11 @@ public class MimeMessageUtilsTest {
         }
         else {
             final MockFile mockfile = new MockFile("/Urs/luigialons:email!!/src","q:W~Zb4&7s#.Z(VKP^");
-            if (os.contains("ubuntu")) {
-                assertDoesNotThrow(() -> MimeMessageUtils.writeMimeMessage(var2, mockfile));
-            }
-            else {
-                try {
-                    MimeMessageUtils.writeMimeMessage(var2, mockfile);
-                    Assert.fail("Expecting exception: IOException");
-                } catch (IOException var5) {
-                    EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
-                }
+            try {
+                MimeMessageUtils.writeMimeMessage(var2, mockfile);
+                Assert.fail("Expecting exception: IOException");
+            } catch (IOException var5) {
+                EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
             }
         }
     }
