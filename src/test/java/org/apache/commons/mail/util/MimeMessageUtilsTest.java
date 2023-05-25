@@ -201,7 +201,7 @@ public class MimeMessageUtilsTest {
                 EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
             }
         } else if (os.contains("linux")) {
-            final MockFile mockfile = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
+            final MockFile mockfile = new MockFile("/Urs/luigialons:email!!/src", "q:W~Zb4&7s#.Z(VKP^");
             assertDoesNotThrow(() -> MimeMessageUtils.writeMimeMessage(var2, mockfile));
         } else {
             final MockFile mockfile = new MockFile("/Urs/luigialons:email!!/src", "q:W~Zb4&7s#.Z(VKP^");
