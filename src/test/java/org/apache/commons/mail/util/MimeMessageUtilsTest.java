@@ -245,6 +245,7 @@ public class MimeMessageUtilsTest {
         MimeMessage var2 = MimeMessageUtils.createMimeMessage((Session)null, var1);
         // Il test deve verificare che viene lanciata una IOException perchè le cartelle non sono state generate
         String os = System.getProperty("os.name").toLowerCase();
+        System.out.println(os);
         if (os.contains("win")) {
             final MockFile mockfile = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
             try {
