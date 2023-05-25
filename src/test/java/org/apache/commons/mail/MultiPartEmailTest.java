@@ -703,11 +703,11 @@ public class MultiPartEmailTest extends AbstractEmailTest
     }
 
     @Test(
-            expected = IllegalAccessError.class
+            expected = EmailException.class
     )
     public void test50() throws Throwable {
         MultiPartEmail var1 = new MultiPartEmail();
-        URL var2 = MockURL.getHttpExample();
+        URL var2 = new URL("http://www.someFakeButWellFormedURL.org/fooExample");
         var1.attach(var2, "<(e^B2gklbcaKryGA", "<(e^B2gklbcaKryGA");
         Assert.fail("Expecting exception: Exception");
 
