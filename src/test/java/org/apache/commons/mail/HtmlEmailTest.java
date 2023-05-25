@@ -1208,29 +1208,21 @@ public class HtmlEmailTest extends AbstractEmailTest
         assertDoesNotThrow(() -> var1.embed((DataSource)null, "' is already bound to file "));
     }
 
-    //Test case generato senza assert
-   /* @Test
-    public void test46() throws Throwable {
+   public void test46() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         EvoSuiteURL var2 = new EvoSuiteURL("http:/ewww.UmFakeButWellFredURLgorgtextb3pwt/html");
         NetworkHandling.createRemoteTextFile(var2, "embedded DataSource '");
         URL var3 = MockURL.getFtpExample();
         URL var4 = MockURL.URL(var3, "http:/ewww.UmFakeButWellFredURLgorgtextb3pwt/html");
-        var1.embed(var4, "embedded DataSource '");
-    }*/
+        assertDoesNotThrow(() -> var1.embed(var4, "embedded DataSource '"));
+    }
 
     @Test(expected = Exception.class)
     public void test47() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         //URL var2 = MockURL.getHttpExample();
         URL var2 = new URL("http://www.google.com");
-
-        //try {
-            var1.embed(var2, "");
-            Assert.fail("Expecting exception: Exception");
-        /*} catch (Exception var4) {
-            EvoAssertions.verifyException("org.apache.commons.mail.HtmlEmail", var4);
-        }*/
+        var1.embed(var2, "");
 
     }
 
@@ -1289,13 +1281,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         File var2 = File.createTempFile("des not Yxist", "des not Yxist");
         var1.embed(var2, "des not Yxist");
         HtmlEmail var3 = var1.setHtmlMsg("%22des%20not%20Yxist");
-
-        //try {
-            var3.buildMimeMessage();
-            Assert.fail("Expecting exception: Exception");
-        /*} catch (Exception var5) {
-            EvoAssertions.verifyException("org.apache.commons.mail.Email", var5);
-        }*/
+        var3.buildMimeMessage();
 
     }
 
@@ -1511,13 +1497,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         File var2 = File.createTempFile("does not exist", "does not exist");
         var1.embed(var2, "does not exist");
         var1.setMsg("%22%20does%20not%20exist");
-
-        //try {
-            var1.buildMimeMessage();
-            Assert.fail("Expecting exception: Exception");
-       /* } catch (Exception var4) {
-            EvoAssertions.verifyException("org.apache.commons.mail.Email", var4);
-        }*/
+        var1.buildMimeMessage();
 
     }
 

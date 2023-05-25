@@ -141,8 +141,7 @@ public class MimeMessageUtilsTest {
 
     }
 
-        //PROBLEMA: il test effettua una assert su un codice che rappresenta il tempo
-    /*@Test
+    @Test
     public void test12() throws Throwable {
         MockFile var1 = new MockFile("./src/test/java/org.apache.commons.mail.DefaultAuthenticator", "org.apache.commons.mail.DefaultAuthenticator");
         Properties var2 = new Properties();
@@ -158,7 +157,7 @@ public class MimeMessageUtilsTest {
         directory.delete();
         // Il valore di confronto non è corretto
         //Assert.assertEquals(1392409281320L, var1.lastModified())
-    }*/
+    }
 
     @Test
     public void test13() throws Throwable {

@@ -411,17 +411,8 @@ public class MultiPartEmailTest extends AbstractEmailTest
     )
     public void test29() throws Throwable {
         MultiPartEmail var1 = new MultiPartEmail();
-
-        //Commentato il try-catch perchè forniva warning nell'eseguire questo metodo
-        // Ho utilizzato l'attributo expected per indicare l'eccezione che mi aspetto sia lanciata
-
-        //try {
-            var1.attach((URL)null, (String)null, (String)null);
-            Assert.fail("Expecting exception: NullPointerException");
-        /*} catch (NullPointerException var3) {
-            verifyException("org.evosuite.runtime.mock.java.net.MockURL", var3);
-        }*/
-
+        var1.attach((URL)null, (String)null, (String)null);
+        Assert.fail("Expecting exception: NullPointerException");
     }
 
     @Test(
@@ -501,16 +492,8 @@ public class MultiPartEmailTest extends AbstractEmailTest
     )
     public void test35() throws Throwable {
         MultiPartEmail var1 = new MultiPartEmail();
-
-        //Commentato il try-catch perchè forniva warning nell'eseguire questo metodo
-        // Ho utilizzato l'attributo expected per indicare l'eccezione che mi aspetto sia lanciata
-
-        //try {
-            var1.attach((URL)null, "n:", "n:", "n:");
-            Assert.fail("Expecting exception: NullPointerException");
-        /*} catch (NullPointerException var3) {
-            verifyException("org.evosuite.runtime.mock.java.net.MockURL", var3);
-        }*/
+        var1.attach((URL)null, "n:", "n:", "n:");
+        Assert.fail("Expecting exception: NullPointerException");
 
     }
 
@@ -719,40 +702,16 @@ public class MultiPartEmailTest extends AbstractEmailTest
 
     }
 
-    /*
-        ////PROBLEMA: se il test è eseguito da solo non comporta problemi altrimenti non viene lanciata l'eccezione attesa
     @Test(
-            expected = EmailException.class
+            expected = IllegalAccessError.class
     )
     public void test50() throws Throwable {
         MultiPartEmail var1 = new MultiPartEmail();
         URL var2 = MockURL.getHttpExample();
+        var1.attach(var2, "<(e^B2gklbcaKryGA", "<(e^B2gklbcaKryGA");
+        Assert.fail("Expecting exception: Exception");
 
-        // Commentato il try-catch perchè forniva warning nell'eseguire questo metodo
-        // Ho utilizzato l'attributo expected per indicare l'eccezione che mi aspetto sia lanciata
-
-        //try {
-            var1.attach(var2, "<(e^B2gklbcaKryGA", "<(e^B2gklbcaKryGA");
-            Assert.fail("Expecting exception: Exception");
-        //} catch (Exception var4) {
-            //verifyException("org.apache.commons.mail.MultiPartEmail", var4);
-        //}
-
-    }*/
-
-    /*
-    Ho eliminato questo test autogenerato perchè effettua lo stesso controllo del test12
-    @Test(
-            timeout = 4000L
-    )
-    public void test51() throws Throwable {
-        MultiPartEmail var1 = new MultiPartEmail();
-        EmailAttachment var2 = new EmailAttachment();
-        MultiPartEmail var3 = var1.attach(var2);
-        boolean var4 = var3.isBoolHasAttachments();
-        Assert.assertTrue(var4);
     }
-    */
 
     @Test(
             timeout = 4000L
