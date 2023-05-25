@@ -245,7 +245,6 @@ public class MimeMessageUtilsTest {
         MimeMessage var2 = MimeMessageUtils.createMimeMessage((Session)null, var1);
         // Il test deve verificare che viene lanciata una IOException perchè le cartelle non sono state generate
         String os = System.getProperty("os.name").toLowerCase();
-        System.out.println(os);
         if (os.contains("win")) {
             final MockFile mockfile = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
             try {
@@ -254,6 +253,9 @@ public class MimeMessageUtilsTest {
             } catch (IOException var5) {
                 EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var5);
             }
+        } else if (os.contains("linux")) {
+            final MockFile mockfile = new MockFile("./src/test/java/org.apache.commons.mail.4U:@iBFSz", "q:W~Zb4&7s#.Z(VKP^");
+            assertDoesNotThrow(() -> MimeMessageUtils.writeMimeMessage(var2, mockfile));
         }
         else {
             final MockFile mockfile = new MockFile("/Urs/luigialons:email!!/src","q:W~Zb4&7s#.Z(VKP^");
