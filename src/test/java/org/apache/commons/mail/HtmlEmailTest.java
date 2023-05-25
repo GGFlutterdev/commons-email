@@ -803,6 +803,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         EmailAttachment var2 = new EmailAttachment();
         var1.attach(var2);
         HtmlEmail var3 = var1.setTextMsg("W;?O)Q^w>>K{l}|K");
+        Assert.fail("Expecting exception: EmailException");
     }
 
     @Test
@@ -945,6 +946,7 @@ public class HtmlEmailTest extends AbstractEmailTest
         EmailAttachment var2 = new EmailAttachment();
         MultiPartEmail var3 = var1.attach(var2);
         HtmlEmail var4 = var1.setHtmlMsg("inline");
+        Assert.fail("Expecting exception: EmailException");
     }
 
     @Test
@@ -1220,9 +1222,9 @@ public class HtmlEmailTest extends AbstractEmailTest
     @Test(expected = Exception.class)
     public void test47() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
-        //URL var2 = MockURL.getHttpExample();
         URL var2 = new URL("http://www.google.com");
         var1.embed(var2, "");
+        Assert.fail("Expecting exception: Exception");
 
     }
 
@@ -1277,7 +1279,6 @@ public class HtmlEmailTest extends AbstractEmailTest
     @Test(expected = Exception.class)
     public void test51() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
-        //File var2 = MockFile.createTempFile("\"des not Yxist", "\"des not Yxist");
         File var2 = File.createTempFile("des not Yxist", "des not Yxist");
         var1.embed(var2, "des not Yxist");
         HtmlEmail var3 = var1.setHtmlMsg("%22des%20not%20Yxist");
@@ -1363,10 +1364,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
     }
 
-    @Test(
-
-            expected = IOException.class
-    )
+    @Test(expected = IOException.class)
     public void test58() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         MockFile var2 = new MockFile("-5/f");
@@ -1493,7 +1491,6 @@ public class HtmlEmailTest extends AbstractEmailTest
     @Test(expected = Exception.class)
     public void test67() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
-        //File var2 = MockFile.createTempFile("\" does not exist", "\" does not exist");
         File var2 = File.createTempFile("does not exist", "does not exist");
         var1.embed(var2, "does not exist");
         var1.setMsg("%22%20does%20not%20exist");
@@ -1519,7 +1516,6 @@ public class HtmlEmailTest extends AbstractEmailTest
     @Test
     public void test69() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
-        //File var2 = MockFile.createTempFile("\" does not exist", "\" does not exist");
         File var2 = File.createTempFile(" does not exist", " does not exist");
         String var3 = var1.embed(var2, "\" does not exist");
         Assert.assertNotNull(var3);
@@ -1545,11 +1541,7 @@ public class HtmlEmailTest extends AbstractEmailTest
 
 
     //L'assert è stata aggiunta a mano perché il caso di test è stato generato senza
-    @Test(
-
-            expected = NullPointerException.class
-
-    )
+    @Test(expected = NullPointerException.class)
     public void test71() throws Throwable {
         HtmlEmail var1 = new HtmlEmail();
         var1.embed((File)null);
