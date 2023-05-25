@@ -55,36 +55,7 @@ public class MimeMessageUtilsTest {
         }
 
     }
-
-    /*
-     il test autogenerato è errato perchè vuole verificare la FileNotFound ma la libreria non gestisce l'eccezione e il primo parametro è null quindi viene generata una NullPointerException
-     se i parametri sono corretti
-      */
-
-  /*  @Test(expected = FileNotFoundException.class)
-    public void test03() throws Throwable {
-        String os = System.getProperty("os.name").toLowerCase();
-        MockFile var1 = null;
-        byte[] var = new byte[4];
-        MimeMessage mimeMessage = MimeMessageUtils.createMimeMessage((Session)null, var);
-        if (os.contains("win")) {
-            //Path for windows
-            var1 = new MockFile("./src/test/java/org.apache.commons.mail.4UiBFSz", "q:,W~Zb4&7s#.Z(VKP^");
-        }
-        else {
-            //Path for Mac and Ubuntu
-            var1 = new MockFile("/Urs/luigialons-email/src/q:W~Zb4&7s#.Z(VKP^");
-        }
-
-        try {
-            MimeMessageUtils.writeMimeMessage(mimeMessage, var1);
-            Assert.fail("Expecting exception: FileNotFoundException");
-        } catch (FileNotFoundException var3) {
-            EvoAssertions.verifyException("org.evosuite.runtime.mock.java.io.MockFileOutputStream", var3);
-        }
-
-    }
-*/
+    
     @Test
     public void test04() throws Throwable {
         try {
@@ -169,32 +140,6 @@ public class MimeMessageUtilsTest {
         }
 
     }
-
-    /*
-        Dovrebbe testare lo stesso problema del test15()
-    @Test(
-            expected = IOException.class
-    )
-    public void test11() throws Throwable { //PROBLEMA: il test non va a buon fine perchè crea una Sessione null
-        Session var1 = Session.getDefaultInstance((Properties)null);
-        //Session var1 = Session.getDefaultInstance(new Properties());
-        byte[] var2 = new byte[6];
-        ByteArrayInputStream var3 = new ByteArrayInputStream(var2);
-        MimeMessage var4 = MimeMessageUtils.createMimeMessage(var1, var3);
-
-        // NON può essere creata una cartella con caratteri speciali nel nome
-        MockFile var5 = new MockFile("'r:n`N)Wmsi-aFvPO_", "{r;EudG>hlm:/evJ");
-        //MockFile var5 = new MockFile("abc", "cde");
-
-        try {
-            MimeMessageUtils.writeMimeMessage(var4, var5);
-            Assert.fail("Expecting exception: IOException");
-        } catch (IOException var7) {
-            EvoAssertions.verifyException("org.apache.commons.mail.util.MimeMessageUtils", var7);
-        }
-
-    }*/
-
 
         //PROBLEMA: il test effettua una assert su un codice che rappresenta il tempo
     /*@Test
